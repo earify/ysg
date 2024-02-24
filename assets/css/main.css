@@ -30,6 +30,27 @@
 	font-style: normal;
 }
 
+.jal {
+  font-family: 'jalnan', sans-serif;
+}
+
+.AgL {
+  font-family: 'SBAggroL', sans-serif;
+}
+
+.AgM {
+  font-family: 'SBAggroM', sans-serif;
+}
+
+.AgB {
+  font-family: 'SBAggroB', sans-serif;
+}
+
+.align_left {
+	text-align: left;
+	position: relative;
+	margin-right: 20px;
+}
 /*
 	Phantom by HTML5 UP
 	html5up.net | @ajlkn
@@ -192,7 +213,7 @@ input, select, textarea {
 	}
 
 	p {
-		margin: 0 0 2em 0;
+		margin: 0 0 1em 0;
 	}
 
 	h1 {
@@ -229,7 +250,7 @@ input, select, textarea {
 		line-height: 1.5;
 		margin: 0 0 2em 0;
 		text-transform: uppercase;
-		letter-spacing: 0.35em;
+		letter-spacing: 0.1em;
 	}
 
 		h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -1875,7 +1896,7 @@ input, select, textarea {
 			width: 2.65em;
 			height: 2.65em;
 			display: inline-block;
-			text-align: center;
+			text-align: center ;
 			line-height: 2.65em;
 			color: inherit;
 		}
@@ -2614,6 +2635,7 @@ input, select, textarea {
 			position: relative;
 			width: calc(33.33333% - 2.5em);
 			margin: 2.5em 0 0 2.5em;
+			font-family: 'SBAggroM';
 		}
 
 			.tiles article > .image {

@@ -15,21 +15,19 @@
 		<style>
 			body {
 					background-color: #252525; /* 검은색 배경 색상을 여기에 지정하세요 */
-					color: #ffffff; /* 텍스트 색상을 흰색으로 설정 (예시) */
+					color: #ffffff; 
 					/* font-family: 'yg-jalnan'; */
 			}
-
+/* 
 			h1, h2 {
-					/* background-color: #252525; 검은색 배경 색상을 여기에 지정하세요 */
-					color: #ffffff; /* 텍스트 색상을 흰색으로 설정 (예시) */
+					color: #ffffff; 
 					font-family: 'jalnan';
-			} 
+			}  */
 
-			h3, p {
-					/* background-color: #252525; 검은색 배경 색상을 여기에 지정하세요 */
-					color: #ffffff; /* 텍스트 색상을 흰색으로 설정 (예시) */
+			/* h3 {
+					color: #ffffff; 
 					font-family: 'SBAggroL';
-			}
+			} */
 
 
 
@@ -53,7 +51,7 @@
 
 							<!-- Logo -->
 								<a href="index.html" class="logo">
-									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">FYZ</span>
+									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">집에가고싶다</span>
 								</a>
 
 							<!-- Nav -->
@@ -82,9 +80,8 @@
 					<div id="main">
 						<div class="inner">
 							<header>
-								<h1>다양한 정보들을 손쉽게 알아보세요<br />
-								모든 서비스는 무료입니다</a>.</h1>
-								<p>모든 문의는 홈페이지 아래의 연락처를 통해주세요.</p>
+								<h1 class="jal">여수고에 대한 정보를<br/>손쉽게 만나보세요!</h1>
+								<h3 class="AgL">모든 문의는 홈페이지 아래의 연락처를 통해 해주세요.</h3>
 							</header>
 							<section class="tiles">
 								<article class="style1">
@@ -92,10 +89,10 @@
 										<img src="images/pic01.jpg" alt="" />
 									</span>
 									<a href="generic.html">
-										<h2>오늘의 급식</h2>
+										<h2 class="jal">오늘의 급식</h2>
 										<div class="content">
-											<p><div id="dateDisplay"></div></p>
-											<p><div id="menuResultContainer"></div></p>
+											<!-- <p><div id="dateDisplay"></div></p> -->
+											<p class="AgL"><div id="menuResultContainer"></div></p>
 										</div>
 									</a>
 								</article>
@@ -104,9 +101,10 @@
 										<img src="images/pic02.jpg" alt="" />
 									</span>
 									<a href="generic.html">
-										<h2>Lorem</h2>
+										<h2 class="jal">시간표</h2>
 										<div class="content">
-											<p>나는 빡빡이다</p>
+											<p><div id="dateDisplay"></div></p>
+											<p><div class="align_left" id="timeTables1"></div></p>
 											<!-- <h3>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</h3> -->
 										</div>
 									</a>
@@ -116,7 +114,7 @@
 										<img src="images/pic03.jpg" alt="" />
 									</span>
 									<a href="generic.html">
-										<h2>Feugiat</h2>
+										<h2 class="jal">학사일정</h2>
 										<div class="content">
 											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
 										</div>
@@ -275,5 +273,6 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 			<script src="assets/js/bab.js"></script>
+			<script src="assets/js/timetable.js"></script>
 	</body>
 </html>
