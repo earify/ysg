@@ -1,5 +1,3 @@
-/*
-
 // 현재 날짜 정하기
 const currentDate = new Date();  // 변수생성
 const year = currentDate.getFullYear();  // 연도
@@ -25,7 +23,6 @@ const params = {
     'MLSV_YMD': "20230913",
 };
 
-*/
 // API 요청 보내기
 fetch(`${api_url}?${new URLSearchParams(params)}`)
     .then(response => response.text())

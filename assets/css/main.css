@@ -23,6 +23,12 @@
     font-style: normal;
 }
 
+@font-face {
+	font-family: 'SBAggroB';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
 
 /*
 	Phantom by HTML5 UP
@@ -2244,6 +2250,7 @@ input, select, textarea {
 		width: 1em;
 		z-index: -1;
 	}
+
 
 		input[type="checkbox"] + label,
 		input[type="radio"] + label {
