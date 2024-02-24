@@ -13,16 +13,32 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<style>
-			h1 {
+			body {
 					background-color: #252525; /* 검은색 배경 색상을 여기에 지정하세요 */
 					color: #ffffff; /* 텍스트 색상을 흰색으로 설정 (예시) */
-					font-family: 'yg-jalnan';
+					/* font-family: 'yg-jalnan'; */
+			}
+
+			h1, h2 {
+					/* background-color: #252525; 검은색 배경 색상을 여기에 지정하세요 */
+					color: #ffffff; /* 텍스트 색상을 흰색으로 설정 (예시) */
+					font-family: 'jalnan';
 			} 
-			h1 {
-    font-family: 'Your Font Name', sans-serif, Arial, sans-serif;
-    /* h1 요소에 대한 글꼴 설정, 여러 글꼴을 쉼표로 나열하여 대체 가능한 순서를 지정 */
-    /* 'Your Font Name' 글꼴을 찾지 못하면 순서대로 Arial, 그 후에 기본 sans-serif 사용 */
-		}
+
+			h3, p {
+					/* background-color: #252525; 검은색 배경 색상을 여기에 지정하세요 */
+					color: #ffffff; /* 텍스트 색상을 흰색으로 설정 (예시) */
+					font-family: 'SBAggroM';
+			} 
+
+			/*
+			h3, p {
+					background-color: #252525; 검은색 배경 색상을 여기에 지정하세요
+					color: #ffffff; 텍스트 색상을 흰색으로 설정 (예시)
+					font-family: 'SBAggroL';
+			} 
+			*/
+
 	</style>
 	</head>
 	<body class="is-preload">
@@ -76,8 +92,9 @@
 									<a href="generic.html">
 										<h2>오늘의 급식</h2>
 										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
+											<p>아 살s려주s세요</p>
+											<p><div id="menuResultContainer"></div></p>
+										</d
 									</a>
 								</article>
 								<article class="style2">
@@ -88,6 +105,7 @@
 										<h2>Lorem</h2>
 										<div class="content">
 											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+											<!-- <h3>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</h3> -->
 										</div>
 									</a>
 								</article>
@@ -254,6 +272,6 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-
+			<script src="assets/js/bab.js"></script>
 	</body>
 </html>
