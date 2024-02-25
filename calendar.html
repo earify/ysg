@@ -1,9 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>달력</title>
+    <link rel="stylesheet" href="assets/css/font.css" />
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -31,9 +34,10 @@
         .calendar-header {
             background-color: #4285f4;
             color: #ffffff;
-            padding: 10px;
+            padding: 20px;
             text-align: center;
             font-size: 1.5em;
+            font-family: 'jalnan', sans-serif;
             border-radius: 10px 10px 0 0;
         }
 
@@ -45,11 +49,21 @@
         .day {
             position: relative;
             padding: 40px;
-            text-align: left;
+            width: 50px;
+            text-align: center;
             font-size: 1.2em;
+            font-family: 'SBAggroB', sans-serif;
             background-color: #ffffff;
             border: 1px solid #e0e0e0;
             transition: background-color 0.3s ease;
+        }
+
+        .day-text {
+            position: absolute;
+            font-size: 0.9em;
+            font-family: 'SBAggroL', sans-serif;
+            top: 5px;
+            left: 5px;
         }
 
         .day:hover {
@@ -59,9 +73,9 @@
         .sunday {
             color: #d32f2f;
             font-weight: bold;
-          }
-          
-          .saturday {
+        }
+
+        .saturday {
             color: #1976d2;
             font-weight: bold;
         }
@@ -86,6 +100,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="calendar-container">
         <div class="arrows">
@@ -105,7 +120,7 @@
 
             const daysInMonth = new Date(currentYear, currentMonth, 0).getDate();
             const firstDayIndex = new Date(`${currentYear}-${currentMonth}-1`).getDay();
-            
+
             const dayNames = ['일', '월', '화', '수', '목', '금', '토'];
 
             // 달력 헤더 생성
@@ -134,16 +149,17 @@
                     const dayElement = document.createElement('div');
                     dayElement.classList.add('day');
 
+                    // 현재 날짜가 이번 달의 첫 날짜 이전이면 빈 칸으로 처리
                     if (row === 0 && col < firstDayIndex) {
-                        // 이번 달의 첫 날짜 이전이면 빈 칸으로 처리
                         dayElement.innerText = '';
                     } else if (currentDay > daysInMonth) {
-                        // 이번 달의 마지막 날짜 이후면 빈 칸으로 처리
+                        // 현재 날짜가 이번 달의 마지막 날짜 이후면 빈 칸으로 처리
                         dayElement.innerText = '';
                     } else {
-                        dayElement.innerText = currentDay;
+                        // 텍스트 위치 조정
+                        dayElement.innerHTML = `<div class="day-text">${currentDay}</div>`;
 
-                        // 일요일과 토요일에 색상 적
+                        // 일요일과 토요일에 색상 적용
                         if (col === 0) {
                             dayElement.classList.add('sunday');
                         } else if (col === 6) {
@@ -151,7 +167,7 @@
                         }
 
                         // 특정 날짜에 이벤트 추가 (2024년 5월 15일에 "사과" 추가)
-                        if (currentYear === 2024 && currentMonth === 5 && currentDay === 15) {
+                        if (currentYear === 2024 && currentMonth === 2 && currentDay === 15) {
                             const eventElement = document.createElement('div');
                             eventElement.classList.add('event');
                             eventElement.innerText = '사과';
@@ -189,4 +205,5 @@
         updateCalendar();
     </script>
 </body>
+
 </html>
