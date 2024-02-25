@@ -1,0 +1,50 @@
+/* 폰트들 */
+@font-face {
+	font-family: 'jalnan';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+    font-family: 'SBAggroL';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroL.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SBAggroM';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroM.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+	font-family: 'SBAggroB';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.jal {
+  font-family: 'jalnan', sans-serif;
+}
+
+.AgL {
+  font-family: 'SBAggroL', sans-serif;
+}
+
+.AgM {
+  font-family: 'SBAggroM', sans-serif;
+}
+
+.AgB {
+  font-family: 'SBAggroB', sans-serif;
+}
+
+.align_left {
+	text-align: left;
+	position: relative;
+	margin-right: 20px;
+}

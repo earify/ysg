@@ -61,6 +61,7 @@ fetch(`${bab_api_url}?${new URLSearchParams(bab_params)}`)
     // 날짜를 HTML에 표시
     const dateDisplayElement = document.getElementById('dateDisplay');
     dateDisplayElement.innerText = `${friendlyDate}`;
-})
 
+    console.log(menuResult) // 테스트용 로그 표시
+})
 .catch(error => console.error(error));

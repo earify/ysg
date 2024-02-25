@@ -28,7 +28,7 @@ fetch(`${tt_api_url}?${new URLSearchParams(tt_params)}`)
             perio_num = perio_num.substring(20,21);
             // 포함되어 있다면 출력
             // console.log(perio_num);
-            mainTable_preview += 'ㅤㅤㅤㅤㅤㅤㅤㅤㅤ' + perio_num + ' | '
+            mainTable_preview += 'ㅤㅤㅤㅤㅤㅤ' + perio_num + ' | '
             mainTable_webview += perio_num + ' | '
         }
         
@@ -42,6 +42,7 @@ fetch(`${tt_api_url}?${new URLSearchParams(tt_params)}`)
             itrt_num = itrt_num.replace('<','')
             itrt_num = itrt_num.replace('/','')
             itrt_num = itrt_num.replace('I','')
+            itrt_num = itrt_num.replace('Ⅰ','')
             itrt_num = itrt_num.replace('T','')
             itrt_num = itrt_num.replace('bogang','[보강]') // 다듬기
             // console.log(itrt_num);
@@ -52,10 +53,11 @@ fetch(`${tt_api_url}?${new URLSearchParams(tt_params)}`)
     }
     const TableForPre = mainTable_preview;
     const TableForWeb = mainTable_webview;
-    console.log(TableForPre);
-
+    
     const DisplayTable = document.getElementById('timeTables1');
     DisplayTable.innerText = TableForPre;
+
+    console.log(TableForPre); // 테스트용 로그 표시
     // const DisplayTable = document.getElementById('timeTables1');
     // DisplayTable.innerText = TableForWeb;
 })
