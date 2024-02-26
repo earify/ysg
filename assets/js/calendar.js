@@ -8,7 +8,7 @@ function updateCalendar() {
   const daysInMonth = new Date(currentYear, currentMonth, 0).getDate();
   const firstDayIndex = new Date(`${currentYear}-${currentMonth}-1`).getDay();
 
-  const dayNames = ["일", "월", "화", "수", "목", "금", "토"];
+  const dayNames = ["일      ", "월      ", "화      ", "수      ", "목      ", "금      ", "토      "];
 
   // 달력 헤더 생성
   const header = document.createElement("div");
@@ -71,19 +71,38 @@ function updateCalendar() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  const eventElements = document.querySelectorAll(".event");
+document.addEventListener('DOMContentLoaded', function () {
+  const calendarElement = document.getElementById('currentCalendar');
 
-  eventElements.forEach(function (eventElement) {
-    // 터치 이벤트 추가
-    eventElement.addEventListener("touchstart", function (event) {
-      event.preventDefault(); // 기본 터치 이벤트 동작을 막음
-      const eventName = eventElement.getAttribute("data-event");
-      alert(eventName); // 이벤트를 터치했을 때 어떤 동작을 할지 정의
-    });
+  // 이벤트 처리 함수
+  function showEventPopup(eventContent) {
+      // 팝업 생성
+      const popup = document.createElement('div');
+      popup.classList.add('event-popup');
+      popup.innerHTML = `<div class="event-content">${eventContent}</div>`;
+      document.body.appendChild(popup);
+
+      // 닫기 버튼 추가
+      const closeButton = document.createElement('button');
+      closeButton.classList.add('close-button');
+      closeButton.innerText = '닫기';
+      closeButton.addEventListener('click', function () {
+          document.body.removeChild(popup);
+      });
+      popup.appendChild(closeButton);
+  }
+
+  // 각 날짜 칸에 이벤트 처리 추가
+  const dayElements = calendarElement.querySelectorAll('.day');
+  dayElements.forEach(function (dayElement) {
+      dayElement.addEventListener('click', function () {
+          const eventContent = dayElement.getAttribute('data-event');
+          if (eventContent) {
+              showEventPopup(eventContent);
+          }
+      });
   });
 });
-
 function prevMonth() {
   currentMonth--;
   if (currentMonth === 0) {

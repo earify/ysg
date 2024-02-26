@@ -36,9 +36,9 @@
         display: grid;
         grid-template-columns: repeat(7, 1fr);
     }
-
+    
     .day {
-        position: relative;
+        position: relative ;
         padding: 40px;
         height: 35px;
         width: 50px;
@@ -49,7 +49,7 @@
         border: 1px solid #e0e0e0;
         transition: background-color 0.3s ease;
     }
-
+    
     .day-text {
         position: absolute;
         font-size: 0.8em;
@@ -58,20 +58,32 @@
         top: 5px;
         left: 5px;
     }
-
+    
+    .day-name {
+        position: absolute;
+        font-size: 1em;
+        font-family: 'SBAggroL', sans-serif;
+        font-weight: bold;
+        text-align: center;
+        top: 100%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    
     .day:hover {
         background-color: #e0e0e0;
     }
-
+    
     .sunday {
         color: #d32f2f;
         font-weight: bold;
     }
-
+    
     .saturday {
         color: #1976d2;
         font-weight: bold;
     }
+    
 
     .arrows {
         display: flex;
