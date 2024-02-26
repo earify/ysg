@@ -40,7 +40,7 @@
     .day {
         position: relative ;
         padding: 40px;
-        height: 35px;
+        height: 90px;
         width: 50px;
         text-align: center;
         font-size: 1.2em;
@@ -74,6 +74,33 @@
         background-color: #e0e0e0;
     }
     
+    .event {
+        position: sticky; 
+        position: absolute;
+        cursor: pointer;
+        top: 30px;
+        left: 5px;
+        color: #c6ff42;
+        text-align: left;
+        font-size: medium;
+        font-family: 'SBAggroM';
+        /* font-weight: bold; */
+    }
+
+    .event:hover {
+        content: attr(data-event); /* 이벤트 이름을 속성으로 설정 */
+        position: absolute;
+        top: 30px; /* 툴팁의 위치 조절 */
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #252525;
+        padding: 5px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        white-space: nowrap; /* 툴팁에서 줄 바꿈 방지 */
+        z-index: 1;
+    }
+
     .sunday {
         color: #d32f2f;
         font-weight: bold;
@@ -96,32 +123,6 @@
         cursor: pointer;
     }
 
-    .event {
-        position: sticky; 
-        position: absolute;
-        cursor: pointer;
-        top: 25px;
-        left: 5px;
-        color: #c6ff42;
-        text-align: left;
-        font-size: medium;
-        font-family: 'SBAggroM';
-        /* font-weight: bold; */
-    }
-
-    .event:hover {
-        content: attr(data-event); /* 이벤트 이름을 속성으로 설정 */
-        position: absolute;
-        top: 30px; /* 툴팁의 위치 조절 */
-        left: 50%;
-        transform: translateX(-50%);
-        background-color: #252525;
-        padding: 5px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        white-space: nowrap; /* 툴팁에서 줄 바꿈 방지 */
-        z-index: 1;
-    }
 }
 
 /* 모바일용 UI 크기 */
