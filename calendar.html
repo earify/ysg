@@ -1,209 +1,130 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>여수고 학사일정</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/font.css" />
+		<link rel="stylesheet" href="assets/css/calendar.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		
+		<style>
+			body {
+				background-color: #252525;
+				/* 검은색 배경 색상을 여기에 지정하세요 */
+				color: #fffffe;
+				/* font-family: 'yg-jalnan'; */
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
 
-<!DOCTYPE html>
-<html lang="en">
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>달력</title>
-    <link rel="stylesheet" href="assets/css/font.css" />
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">돌아가기</span>
+								</a>
 
-        .calendar-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
 
-        .calendar {
-            background-color: #f5f5f5;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin: 10px;
-        }
+						</div>
+					</header>
 
-        .calendar-header {
-            background-color: #4285f4;
-            color: #ffffff;
-            padding: 20px;
-            text-align: center;
-            font-size: 1.5em;
-            font-family: 'jalnan', sans-serif;
-            border-radius: 10px 10px 0 0;
-        }
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="generic.html">Ipsum veroeros</a></li>
+							<li><a href="generic.html">Tempus etiam</a></li>
+							<li><a href="generic.html">Consequat dolor</a></li>
+							<li><a href="elements.html">Elements</a></li>
+						</ul>
+					</nav>
 
-        .days {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-        }
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1 class="jal">학사 일정</h1>
+							<!-- <span class="image main"><img src="images/pic13.jpg" alt="" /></span> -->
+							<div class="calendar-container">
+								<div class="arrows">
+										<div class="arrow" onclick="prevMonth()">&#9665;</div>
+										<div class="arrow" onclick="nextMonth()">&#9655;</div>
+								</div>
+								<div class="calendar" id="currentCalendar"></div>
+						</div>
+							
+							<p>hi</p>
+						</div>
+					</div>
 
-        .day {
-            position: relative;
-            padding: 40px;
-            width: 50px;
-            text-align: center;
-            font-size: 1.2em;
-            font-family: 'SBAggroB', sans-serif;
-            background-color: #ffffff;
-            border: 1px solid #e0e0e0;
-            transition: background-color 0.3s ease;
-        }
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<section>
+								<h2>Get in touch</h2>
+								<form method="post" action="#">
+									<div class="fields">
+										<div class="field half">
+											<input type="text" name="name" id="name" placeholder="Name" />
+										</div>
+										<div class="field half">
+											<input type="email" name="email" id="email" placeholder="Email" />
+										</div>
+										<div class="field">
+											<textarea name="message" id="message" placeholder="Message"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send" class="primary" /></li>
+									</ul>
+								</form>
+							</section>
+							<section>
+								<h2>Follow</h2>
+								<ul class="icons">
+									<li><a href="#" class="icon brands style2 fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-dribbble"><span class="label">Dribbble</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-500px"><span class="label">500px</span></a></li>
+									<li><a href="#" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
+									<li><a href="#" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+								</ul>
+							</section>
+							<ul class="copyright">
+								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</footer>
 
-        .day-text {
-            position: absolute;
-            font-size: 0.9em;
-            font-family: 'SBAggroL', sans-serif;
-            top: 5px;
-            left: 5px;
-        }
+			</div>
 
-        .day:hover {
-            background-color: #e0e0e0;
-        }
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="assets/js/calendar.js"></script>
 
-        .sunday {
-            color: #d32f2f;
-            font-weight: bold;
-        }
-
-        .saturday {
-            color: #1976d2;
-            font-weight: bold;
-        }
-
-        .arrows {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-        }
-
-        .arrow {
-            font-size: 2em;
-            cursor: pointer;
-        }
-
-        .event {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            color: #4caf50;
-            font-family: 'SBAggroL';
-        }
-    </style>
-</head>
-
-<body>
-    <div class="calendar-container">
-        <div class="arrows">
-            <div class="arrow" onclick="prevMonth()">&#9665;</div>
-            <div class="arrow" onclick="nextMonth()">&#9655;</div>
-        </div>
-        <div class="calendar" id="currentCalendar"></div>
-    </div>
-
-    <script>
-        let currentMonth = 2; // 5월부터 시작
-        let currentYear = 2024;
-
-        function updateCalendar() {
-            const calendarElement = document.getElementById('currentCalendar');
-            calendarElement.innerHTML = ''; // 달력 비우기
-
-            const daysInMonth = new Date(currentYear, currentMonth, 0).getDate();
-            const firstDayIndex = new Date(`${currentYear}-${currentMonth}-1`).getDay();
-
-            const dayNames = ['일', '월', '화', '수', '목', '금', '토'];
-
-            // 달력 헤더 생성
-            const header = document.createElement('div');
-            header.classList.add('calendar-header');
-            header.innerText = `${currentYear}년 ${currentMonth}월`;
-            calendarElement.appendChild(header);
-
-            // 요일 생성
-            const daysRow = document.createElement('div');
-            daysRow.classList.add('days');
-            dayNames.forEach(dayName => {
-                const dayElement = document.createElement('div');
-                dayElement.classList.add('day');
-                dayElement.innerText = dayName;
-                daysRow.appendChild(dayElement);
-            });
-            calendarElement.appendChild(daysRow);
-
-            // 날짜 생성
-            let currentDay = 1;
-            for (let row = 0; row < 6; row++) { // 6주로 고정
-                const weekRow = document.createElement('div');
-                weekRow.classList.add('days');
-                for (let col = 0; col < 7; col++) {
-                    const dayElement = document.createElement('div');
-                    dayElement.classList.add('day');
-
-                    // 현재 날짜가 이번 달의 첫 날짜 이전이면 빈 칸으로 처리
-                    if (row === 0 && col < firstDayIndex) {
-                        dayElement.innerText = '';
-                    } else if (currentDay > daysInMonth) {
-                        // 현재 날짜가 이번 달의 마지막 날짜 이후면 빈 칸으로 처리
-                        dayElement.innerText = '';
-                    } else {
-                        // 텍스트 위치 조정
-                        dayElement.innerHTML = `<div class="day-text">${currentDay}</div>`;
-
-                        // 일요일과 토요일에 색상 적용
-                        if (col === 0) {
-                            dayElement.classList.add('sunday');
-                        } else if (col === 6) {
-                            dayElement.classList.add('saturday');
-                        }
-
-                        // 특정 날짜에 이벤트 추가 (2024년 5월 15일에 "사과" 추가)
-                        if (currentYear === 2024 && currentMonth === 2 && currentDay === 15) {
-                            const eventElement = document.createElement('div');
-                            eventElement.classList.add('event');
-                            eventElement.innerText = '사과';
-                            dayElement.appendChild(eventElement);
-                        }
-
-                        currentDay++;
-                    }
-
-                    weekRow.appendChild(dayElement);
-                }
-                calendarElement.appendChild(weekRow);
-            }
-        }
-
-        function prevMonth() {
-            currentMonth--;
-            if (currentMonth === 0) {
-                currentMonth = 12;
-                currentYear--;
-            }
-            updateCalendar();
-        }
-
-        function nextMonth() {
-            currentMonth++;
-            if (currentMonth === 13) {
-                currentMonth = 1;
-                currentYear++;
-            }
-            updateCalendar();
-        }
-
-        // 초기 달력 표시
-        updateCalendar();
-    </script>
-</body>
-
+	</body>
 </html>
