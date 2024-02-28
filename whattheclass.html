@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <title>제발</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .table-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .csv-table {
+            flex: 0 0 23%;
+            border: 1px solid #ddd;
+            margin: 5px;
+        }
+        .column1 {
+            background-color: #FFD700; /* 첫 번째 열의 배경색을 지정 (금색) */
+            color: red; /* 첫 번째 열의 글씨색을 지정 (빨간색) */
+            height: auto;
+        }
+        .column2 {
+            background-color: #90EE90; /* 두 번째 열의 배경색을 지정 (연두색) */
+            color: green; /* 두 번째 열의 글씨색을 지정 (초록색) */
+        }
+        .column3 {
+            background-color: #87CEEB; /* 세 번째 열의 배경색을 지정 (하늘색) */
+            color: blue; /* 세 번째 열의 글씨색을 지정 (파란색) */
+        }
+    </style>
+</head>
+<body>
+
+<!-- <h1>제발</h1> -->
+
+<!-- 테이블을 담을 div 추가 -->
+<div id="tablesContainer" class="table-container"></div>
+
+<script>
+// CSV 파일을 불러와서 HTML 테이블에 추가하는 함수
+function loadCSV(index) {
+    // .csv 파일 경로 설정
+    var csvFilePath = `assets/class.csv/${index}.csv`;
+
+    // jQuery를 사용하여 .csv 파일 가져오기
+    $.get(csvFilePath, function(csvData) {
+        // 각 행과 열을 나누기
+        var rows = csvData.split('\n');
+
+        // HTML 테이블 초기화
+        var table = $('<table class="csv-table"></table>');
+
+        // HTML 테이블에 데이터 추가
+        for (var i = 0; i < rows.length; i++) {
+            var cells = rows[i].split(',');
+            var row = $('<tr></tr>');
+            for (var j = 0; j < cells.length; j++) {
+                var cell = $('<td></td>').text(cells[j]);
+
+                // 각 열에 대한 배경색 클래스 추가
+                if (j === 0) {
+                    cell.addClass('column1');
+                } else if (j === 1) {
+                    cell.addClass('column2');
+                } else if (j === 2) {
+                    cell.addClass('column3');
+                }
+
+                // 각 열에 대한 배경색 클래스 추가
+                if (i === 0) {
+                    cell.addClass('row1');
+                } else if (i === 1) {
+                    cell.addClass('row2');
+                }
+
+                row.append(cell);
+            }
+            table.append(row);
+        }
+
+        // 생성한 테이블을 tablesContainer에 추가
+        $('#tablesContainer').append(table);
+    });
+}
+
+// 페이지 로드 후 1.csv부터 8.csv까지 표시하는 함수 호출
+$(document).ready(function() {
+    for (var i = 1; i <= 8; i++) {
+        loadCSV(i);
+    }
+});
+</script>
+
+</body>
+</html>

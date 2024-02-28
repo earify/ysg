@@ -1,129 +1,130 @@
-@media (max-width: 3840px) {
-    body {
-        font-family: 'Arial', sans-serif;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-    }
-
-    .calendar-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .calendar {
-        background-color: #f5f5f5;
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        margin: 10px;
-    }
-
-    .calendar-header {
-        background-color: #4285f4;
-        color: #ffffff;
-        padding: 20px;
-        text-align: center;
-        font-size: 1.5em;
-        font-family: 'jalnan', sans-serif;
-        border-radius: 10px 10px 0 0;
-    }
-
-    .days {
-        display: grid;
-        grid-template-columns: repeat(7, 1fr);
-    }
-    
-    .day {
-        position: relative ;
-        padding: 40px;
-        height: 90px;
-        width: 50px;
-        text-align: center;
-        font-size: 1.2em;
-        font-family: 'SBAggroB', sans-serif;
-        background-color: #252525;
-        border: 1px solid #e0e0e0;
-        transition: background-color 0.3s ease;
-    }
-    
-    .day-text {
-        position: absolute;
-        font-size: 0.8em;
-        font-family: 'SBAggroL', sans-serif;
-        font-weight: bold;
-        top: 5px;
-        left: 5px;
-    }
-    
-    .day-name {
-        position: absolute;
-        font-size: 1em;
-        font-family: 'SBAggroL', sans-serif;
-        font-weight: bold;
-        text-align: center;
-        top: 100%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-    
-    .day:hover {
-        background-color: #e0e0e0;
-    }
-    
-    .event {
-        position: sticky; 
-        position: absolute;
-        cursor: pointer;
-        top: 30px;
-        left: 5px;
-        color: #c6ff42;
-        text-align: left;
-        font-size: medium;
-        font-family: 'SBAggroM';
-        /* font-weight: bold; */
-    }
-
-    .event:hover {
-        content: attr(data-event); /* 이벤트 이름을 속성으로 설정 */
-        position: absolute;
-        top: 30px; /* 툴팁의 위치 조절 */
-        left: 50%;
-        transform: translateX(-50%);
-        background-color: #252525;
-        padding: 5px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        white-space: nowrap; /* 툴팁에서 줄 바꿈 방지 */
-        z-index: 1;
-    }
-
-    .sunday {
-        color: #d32f2f;
-        font-weight: bold;
-    }
-    
-    .saturday {
-        color: #1976d2;
-        font-weight: bold;
-    }
-    
-
-    .arrows {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-    }
-
-    .arrow {
-        font-size: 2em;
-        cursor: pointer;
-    }
-
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
+
+.calendar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.calendar {
+    background-color: #f5f5f5;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+}
+
+.calendar-header {
+    background-color: #4285f4;
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: 'jalnan', sans-serif;
+    border-radius: 10px 10px 0 0;
+}
+
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.day {
+    position: relative;
+    padding: 40px;
+    height: 90px;
+    width: 50px;
+    text-align: center;
+    font-size: 1.2em;
+    font-family: 'SBAggroB', sans-serif;
+    background-color: #252525;
+    border: 1px solid #e0e0e0;
+    transition: background-color 0.3s ease;
+}
+
+.day-text {
+    position: absolute;
+    font-size: 0.8em;
+    font-family: 'SBAggroL', sans-serif;
+    font-weight: bold;
+    top: 5px;
+    left: 5px;
+}
+
+.day-name {
+    position: absolute;
+    font-size: 1em;
+    font-family: 'SBAggroL', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.day:hover {
+    background-color: #e0e0e0;
+}
+
+.event {
+    position: sticky;
+    position: absolute;
+    cursor: pointer;
+    top: 30px;
+    left: 5px;
+    color: #c6ff42;
+    text-align: left;
+    font-size: medium;
+    font-family: 'SBAggroM';
+    /* font-weight: bold; */
+}
+
+.event:hover {
+    content: attr(data-event);
+    /* 이벤트 이름을 속성으로 설정 */
+    position: absolute;
+    top: 30px;
+    /* 툴팁의 위치 조절 */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #252525;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    white-space: nowrap;
+    /* 툴팁에서 줄 바꿈 방지 */
+    z-index: 1;
+}
+
+.sunday {
+    color: #d32f2f;
+    font-weight: bold;
+}
+
+.saturday {
+    color: #1976d2;
+    font-weight: bold;
+}
+
+
+.arrows {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.arrow {
+    font-size: 2em;
+    cursor: pointer;
+}
+
 
 /* 모바일용 UI 크기 */
 @media (max-width: 600px) {

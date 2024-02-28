@@ -1800,6 +1800,9 @@ input, select, textarea {
 
 /* Icon */
 
+.black_icon {
+	color: #333333;
+}
 	.icon {
 		text-decoration: none;
 		border-bottom: none;
@@ -1820,7 +1823,7 @@ input, select, textarea {
 		}
 
 		.icon > .label {
-			display: none;
+			display: none ;
 		}
 
 		.icon:before {
@@ -1852,6 +1855,7 @@ input, select, textarea {
 		}
 
 			.icon.style2:before {
+				color: #333333;
 				font-size: 1.1em;
 			}
 
@@ -3329,3 +3333,5 @@ input, select, textarea {
 			}
 
 		}
+
+
