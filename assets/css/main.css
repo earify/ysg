@@ -1800,9 +1800,6 @@ input, select, textarea {
 
 /* Icon */
 
-.black_icon {
-	color: #333333;
-}
 	.icon {
 		text-decoration: none;
 		border-bottom: none;
@@ -3333,5 +3330,4 @@ input, select, textarea {
 			}
 
 		}
-
 
