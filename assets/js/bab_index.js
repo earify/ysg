@@ -72,7 +72,6 @@ function bab(whatday) {
         cleanThings = cleanThings
           .replace(removeNumbers, "")
           .replace(removeSpecial, "");
-        cleanThings = cleanThings.replace("br/수다날", "");
         cleanThings = cleanThings.replace("/DDISH_NM", "");
         cleanThings = cleanThings.replace("DDISH_NM", "");
         cleanThings = cleanThings.replace("DDISH_NM", "");
@@ -84,13 +83,10 @@ function bab(whatday) {
         cleanThings = cleanThings.replace("br/", "\n");
         cleanThings = cleanThings.replace("br/", "\n");
         cleanThings = cleanThings.replace("br/", "\n");
-        cleanThings = cleanThings.replace("br/", "\n");
-        cleanThings = cleanThings.replace("br/", "\n");
         cleanThings = cleanThings.replace("/", " + ");
         cleanThings = cleanThings.replace("/", " + ");
         cleanThings = cleanThings.replace("/", " + ");
         cleanThings = cleanThings.replace("/", " + ");
-
 
         let menuResult = cleanThings.substring(4);
         console.log(menuResult); // 테스트용 로그 표시
@@ -132,35 +128,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const valueDisplay = document.getElementById("valueDisplay");
   const leftArrow = document.getElementById("leftArrow");
   const rightArrow = document.getElementById("rightArrow");
-  
-  // 왼쪽 화살표 클릭 시 이벤트 리스너 등록
-  leftArrow.addEventListener("click", function () {
-    asd -= 1;
-    updateDisplay();
-    babday = addDaysToDate(formattedDate, asd); // 수정된 부분
-    babday = String(babday)
-    friendlyDate = `${babday.substring(0, 4)}년 ${babday.substring(4, 6)}월 ${babday.substring(6, 8)}일`;
-    changedDay.setDate(currentDate.getDate() + asd)
-    dayOfWeek = changedDay.getDay();
-    dayName = daysOfWeek[dayOfWeek];
-    console.log(changedDay)
-    console.log(dayName)
-    bab(babday);
-  });
-  // 오른쪽 화살표 클릭 시 이벤트 리스너 등록
-  rightArrow.addEventListener("click", function () {
-    asd += 1;
-    updateDisplay();
-    babday = addDaysToDate(formattedDate, asd); // 수정된 부분
-    babday = String(babday)
-    friendlyDate = `${babday.substring(0, 4)}년 ${babday.substring(4, 6)}월 ${babday.substring(6, 8)}일`;
-    changedDay.setDate(currentDate.getDate() + asd)
-    dayOfWeek = changedDay.getDay();
-    dayName = daysOfWeek[dayOfWeek];
-    console.log(changedDay)
-    console.log(dayName)
-    bab(babday);
-  });
 
   bab(babday)
   // 값 업데이트 및 표시 함수
