@@ -94,6 +94,9 @@ async function tt_when(whatday, whatclass) {
         
 		const yyddmm = document.getElementById("yyddmm");
 		yyddmm.innerText = formattedDate_t;
+
+		const yyddmm1 = document.getElementById("yyddmm1")
+		yyddmm1.innerText = formattedDate_t
         
 		TableForPre = mainTable_preview;
 		const DisplayTable1 = document.getElementById("timeTables1");

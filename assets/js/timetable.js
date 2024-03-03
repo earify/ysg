@@ -10,7 +10,7 @@ let month_tt = (today.getMonth() + 1).toString().padStart(2, "0");
 let day_tt = today.getDate().toString().padStart(2, "0"); // 일을 2자리로 표시
 
 let daysOfWeek = ["일", "월", "화", "수", "목", "금", "토"][today.getDay()];
-let dayOfWeek_t;
+let daysOfWeek_lol = ["일", "월", "화", "수", "목", "금", "토"];
 // 출력 포맷 지정
 let formattedDate_tt = `${year_t}${month_tt}${day_tt}`;
 let formattedDate_t = `${year_t}년 ${month_t}월 ${day_t}일 ${daysOfWeek}요일`;
@@ -33,6 +33,9 @@ let currentDate;
 let TableForPre;
 let itrt_num;
 let friendlyDate;
+let dayOfWeek;
+let dayOfWeek_t;
+let dayOfWeek_tt;
 
 function addDaysToDate(date, daysToAdd) {
     console.log('addDaysToDate') //삭제
@@ -132,7 +135,7 @@ async function tt_when(whatday, whatclass) {
 		yyddmm.innerText = formattedDate_t;
         
 		const webDate = document.getElementById("webDate");
-		webDate.innerText = `${friendlyDate} ${dayName_tt}요일`;
+		webDate.innerText = `${friendlyDate} ${dayName_t}요일`;
 
 		TableForPre = mainTable_preview;
 		const DisplayTable1 = document.getElementById("timeTables1");
@@ -167,21 +170,23 @@ document.addEventListener("DOMContentLoaded", function () {
 		stayc = String(stayc);
 		friendlyDate = `${stayc.substring(0, 4)}년 ${stayc.substring(4, 6)}월 ${stayc.substring(6, 8)}일`;
 		changedDay.setDate(changedDay.getDate() + asd);
-		dayOfWeek_tt = changedDay.getDay();
-		dayName_t = daysOfWeek[dayOfWeek_tt];
+		// dayOfWeek_tt = changedDay.getDay();
+		// dayName_t = daysOfWeek_lol[dayOfWeek_tt];
+		dayName_t = friendlyDate;
 		tt_when(stayc, 1);
 	});
 	// 오른쪽 화살표 클릭 시 이벤트 리스너 등록
 	rightArrow.addEventListener("click", function () {
 		asd += 1;
 		updateDisplay();
-
+		
 		stayc = addDaysToDate(formattedDate_tt, asd);
 		stayc = String(stayc);
 		friendlyDate = `${stayc.substring(0, 4)}년 ${stayc.substring(4, 6)}월 ${stayc.substring(6, 8)}일`;
 		changedDay.setDate(changedDay.getDate() + asd);
-		dayOfWeek_tt = changedDay.getDay();
-		dayName_t = daysOfWeek[dayOfWeek_tt];
+		// dayOfWeek_tt = changedDay.getDay();
+		// dayName_t = daysOfWeek_lol[dayOfWeek_tt];
+		dayName_t = '';
 		tt_when(stayc, 1);
 	});
 

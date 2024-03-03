@@ -39,6 +39,8 @@ function addDaysToDate(date, daysToAdd) {
 
 let lines = '';
 let kepler = '';
+let menuResult
+
 function bab(whatday) {
   // API 엔드포인트 URL
   const bab_api_url = "https://open.neis.go.kr/hub/mealServiceDietInfo";
@@ -88,16 +90,12 @@ function bab(whatday) {
         cleanThings = cleanThings.replace("/", " + ");
         cleanThings = cleanThings.replace("/", " + ");
 
-        let menuResult = cleanThings.substring(4);
+        menuResult = cleanThings.substring(4);
         console.log(menuResult); // 테스트용 로그 표시
 
         // 날짜 + 결과를 HTML에 표시
         let menuResultContainer = document.getElementById("menuResultContainer");
-        menuResultContainer.innerText = friendlyDate + ' ' + dayName + "요일" + "\n\n" + menuResult;
-    
-        // 날짜를 HTML에 표시
-        // let dateDisplayElement = document.getElementById("dateDisplay");
-        // dateDisplayElement.innerText = `${friendlyDate} ${dayName}요일`;
+        menuResultContainer.innerText = menuResult ;
     
       } 
       else {
@@ -106,11 +104,7 @@ function bab(whatday) {
 
         // 날짜 + 결과를 HTML에 표시
         let menuResultContainer = document.getElementById("menuResultContainer");
-        menuResultContainer.innerText = friendlyDate + ' ' + dayName + "요일" + "\n\n" + menuResult;
-    
-        // 날짜를 HTML에 표시
-        // let dateDisplayElement = document.getElementById("dateDisplay");
-        // dateDisplayElement.innerText = `${friendlyDate}`;
+        menuResultContainer.innerText = menuResult;
       }
   })
   // .catch((error) => console.error(error));
