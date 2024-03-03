@@ -25,6 +25,36 @@
 				color: #252525;
 				font-family: 'jalnan';
 			}
+
+			#container {
+            text-align: left;
+        }
+
+        #whatbabday {
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        #leftArrow, #rightArrow {
+            display: inline-block;
+            margin: 0 10px;
+            cursor: pointer;
+            vertical-align: top;
+        }
+
+        #valueDisplay {
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        #menuResultContainer1,
+        #menuResultContainer2,
+        #menuResultContainer3 {
+            display: inline-block;
+            vertical-align: top;
+            margin-right: 50px; /* 각 메뉴 간격을 50px로 지정 */
+            /* margin-left: -100px;  */
+        }
 		</style>
 	</head>
 	<body class="is-preload">
@@ -68,15 +98,18 @@
 							<h1 class="jal">급식</h1>
 							<!-- <span class="image main"><img src="images/pic13.jpg" alt="" /></span> -->
 							<body>
+								<div id="whatbabday"></div>
+								<p></p>
 								<button id="leftArrow">←</button>
 								<span id="valueDisplay">0일 후</span>
 								<button id="rightArrow">→</button>
+								<p><br></p>
 								<div id="menuResultContainer1"></div>
 								<div id="menuResultContainer2"></div>
 								<div id="menuResultContainer3"></div>
 						</body>
 							
-							<p>hi</p>
+							<p></p>
 						</div>
 					</div>
 

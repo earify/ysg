@@ -30,8 +30,8 @@ let TableForPre;
 let itrt_num;
 // let friendlyDate;
 
-async function tt_when(whatday, whatclass) {
-    console.log('tt_when') //삭제
+async function timeTable_run(whatday, whatclass) {
+    console.log('시간표 함수 작동') //삭제
 
 	// API 엔드포인트 URL
 	const tt_api_url = "https://open.neis.go.kr/hub/hisTimetable";
@@ -108,4 +108,4 @@ async function tt_when(whatday, whatclass) {
 	}
 }
 
-tt_when(formattedDate_tt, 1)
+timeTable_run(formattedDate_tt, 1)

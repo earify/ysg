@@ -98,17 +98,21 @@ function bab1(whatday) {
 
         // 날짜 + 결과를 HTML에 표시
         let menuResultContainer1 = document.getElementById("menuResultContainer1");
-        menuResultContainer1.innerText = friendlyDate + ' ' + dayName + "요일" + "\n\n조식\n\n" + menuResult;
+        menuResultContainer1.innerText = "조식\n\n" + menuResult + "\nㅤ";
     
       } 
       else {
         menuResult = '급식 정보가 없습니다'
         console.log(menuResult); // 테스트용 로그 표시
 
-        // 날짜 + 결과를 HTML에 표시
+        // 결과를 HTML에 표시
         let menuResultContainer1 = document.getElementById("menuResultContainer1");
-        menuResultContainer1.innerText = friendlyDate + ' ' + dayName + "요일" + "\n\n조식\n\n" + menuResult;
+        menuResultContainer1.innerText = "조식\n\n" + menuResult + "\nㅤ";
+
+        // 날짜만 표시
       }
+      let whatbabday = document.getElementById("whatbabday");
+      whatbabday.innerText = friendlyDate + ' ' + dayName + "요일";
   })
   // .catch((error) => console.error(error));
 }
@@ -170,7 +174,7 @@ function bab2(whatday) {
 
         // 날짜 + 결과를 HTML에 표시
         let menuResultContainer2 = document.getElementById("menuResultContainer2");
-        menuResultContainer2.innerText = "\n\n중식\n\n" + menuResult;
+        menuResultContainer2.innerText = "중식\n\n" + menuResult + "\nㅤ";
     
       } 
       else {
@@ -179,7 +183,7 @@ function bab2(whatday) {
 
         // 날짜 + 결과를 HTML에 표시
         let menuResultContainer2 = document.getElementById("menuResultContainer2");
-        menuResultContainer2.innerText = "\n\n중식\n\n" + menuResult;
+        menuResultContainer2.innerText = "중식\n\n" + menuResult + "\nㅤ";
       }
   })
   .catch((error) => console.error(error));
@@ -242,7 +246,7 @@ function bab3(whatday) {
 
         // 날짜 + 결과를 HTML에 표시
         let menuResultContainer3 = document.getElementById("menuResultContainer3");
-        menuResultContainer3.innerText = "\n\n석식\n\n" + menuResult;
+        menuResultContainer3.innerText = "석식\n\n" + menuResult + "\nㅤ";
     
       } 
       else {
@@ -251,7 +255,7 @@ function bab3(whatday) {
       
         // 날짜 + 결과를 HTML에 표시
         let menuResultContainer3 = document.getElementById("menuResultContainer3");
-        menuResultContainer3.innerText = "\n\n석식\n\n" + menuResult;
+        menuResultContainer3.innerText = "석식\n\n" + menuResult + "\nㅤ";
       }
   })
   // .catch((error) => console.error(error));
@@ -267,6 +271,9 @@ dayName = daysOfWeek[dayOfWeek];
 bab1(babday)
 bab2(babday)
 bab3(babday)
+
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
   // HTML 요소 참조
