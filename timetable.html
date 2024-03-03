@@ -6,10 +6,10 @@
 -->
 <html>
 	<head>
-		<title>여수고 학사일정</title>
+		<title>여수고 급식</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/calendar.css" />
+		<!-- <link rel="stylesheet" href="assets/css/bab.css" /> -->
 		<link rel="stylesheet" href="assets/css/font.css" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
@@ -54,26 +54,27 @@
 					<nav id="menu">
 						<h2>Menu</h2>
 						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li><a href="generic.html">Ipsum veroeros</a></li>
-							<li><a href="generic.html">Tempus etiam</a></li>
-							<li><a href="generic.html">Consequat dolor</a></li>
-							<li><a href="elements.html">Elements</a></li>
+							<li><a href="index.html">홈 화면</a></li>
+							<li><a href="bab.html">급식</a></li>
+							<li><a href="calendar.html">학사 일정</a></li>
+							<li><a href="study.html">공부 자료</a></li>
+							<li><a href="announcement.html">공지사항</a></li>
 						</ul>
 					</nav>
 
 				<!-- Main -->
 					<div id="main">
 						<div class="inner">
-							<h1 class="jal">학사 일정</h1>
+							<h1 class="jal">시간표</h1>
 							<!-- <span class="image main"><img src="images/pic13.jpg" alt="" /></span> -->
-							<div class="calendar-container">
-								<div class="arrows">
-										<div class="arrow" onclick="prevMonth()">&#9665;</div>
-										<div class="arrow" onclick="nextMonth()">&#9655;</div>
-								</div>
-								<div class="calendar" id="currentCalendar"></div>
-						</div>
+							<body>
+								<div id="yyddmm"></div>
+								<button id="leftArrow">←</button>
+								<span id="valueDisplay">0일 후</span>
+								<button id="rightArrow">→</button>
+								<div id="webDate"></div>
+								<div id="timeTables2"></div>
+						</body>
 							
 							<p>hi</p>
 						</div>
@@ -125,7 +126,7 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-			<script src="assets/js/calendar.js"></script>
+			<script src="assets/js/timetable.js"></script>
 
 	</body>
 </html>

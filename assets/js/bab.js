@@ -99,10 +99,6 @@ function bab(whatday) {
         let menuResultContainer = document.getElementById("menuResultContainer");
         menuResultContainer.innerText = friendlyDate + ' ' + dayName + "요일" + "\n\n" + menuResult;
     
-        // 날짜를 HTML에 표시
-        // let dateDisplayElement = document.getElementById("dateDisplay");
-        // dateDisplayElement.innerText = `${friendlyDate} ${dayName}요일`;
-    
       } 
       else {
         let menuResult = '오늘은 급식이 없습니다'
@@ -111,10 +107,6 @@ function bab(whatday) {
         // 날짜 + 결과를 HTML에 표시
         let menuResultContainer = document.getElementById("menuResultContainer");
         menuResultContainer.innerText = friendlyDate + ' ' + dayName + "요일" + "\n\n" + menuResult;
-    
-        // 날짜를 HTML에 표시
-        // let dateDisplayElement = document.getElementById("dateDisplay");
-        // dateDisplayElement.innerText = `${friendlyDate}`;
       }
   })
   // .catch((error) => console.error(error));
@@ -137,6 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
   leftArrow.addEventListener("click", function () {
     asd -= 1;
     updateDisplay();
+
     babday = addDaysToDate(formattedDate, asd); // 수정된 부분
     babday = String(babday)
     friendlyDate = `${babday.substring(0, 4)}년 ${babday.substring(4, 6)}월 ${babday.substring(6, 8)}일`;
@@ -151,6 +144,7 @@ document.addEventListener("DOMContentLoaded", function () {
   rightArrow.addEventListener("click", function () {
     asd += 1;
     updateDisplay();
+
     babday = addDaysToDate(formattedDate, asd); // 수정된 부분
     babday = String(babday)
     friendlyDate = `${babday.substring(0, 4)}년 ${babday.substring(4, 6)}월 ${babday.substring(6, 8)}일`;
