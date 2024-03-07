@@ -273,8 +273,6 @@ bab2(babday)
 bab3(babday)
 
 
-
-
 document.addEventListener("DOMContentLoaded", function () {
   // HTML 요소 참조
   const valueDisplay = document.getElementById("valueDisplay");

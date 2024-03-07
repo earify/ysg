@@ -1,16 +1,45 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Timetable</title>
-    <link rel="stylesheet" href="assets/css/font.css">
-    <link rel="stylesheet" href="assets/css/test.css">
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+            /* 짝수 행 배경색 */
+        tr:nth-child(odd) {
+          background-color: #444444;
+          color: white;
+        }
+        tr:nth-child(even) {
+          background-color: #666666;
+          color: white;
+        }
+        tr:nth-child(1) {
+          background-color: #aabbff;
+          color: white;
+        }
+
+        /* 첫 번째 열 배경색 */
+        td:first-child {
+          background-color: #4CAF50;
+          color: white;
+        }
+    </style>
+    <title>Table</title>
 </head>
 <body>
-
     <div id="table-container"></div>
-
     <script src="assets/js/test.js"></script>
 </body>
 </html>

@@ -1,142 +1,236 @@
-const currentDate = new Date(); // 변수생성
-const year = currentDate.getFullYear(); // 연도
-const month = (currentDate.getMonth() + 1).toString().padStart(2, "0"); // 월 (0부터 시작하므로 1을 더해줌)
-const day = currentDate.getDate().toString().padStart(2, "0"); // 일
-const formattedDate = `${year}${month}${day}`; // 현재 날짜 8자리로 표기
-// let formattedDate = '20231106'
-let friendlyDate = `${year}년 ${month}월 ${day}일`; //현재 날짜 년월일로 표기
+// 오늘 날짜 구하기
+const today = new Date();
 
-function addDaysToDate(date, daysToAdd) {
-  const year = parseInt(date.substring(0, 4), 10);
-  const month = parseInt(date.substring(4, 6), 10) - 1;
-  const day = parseInt(date.substring(6, 8), 10);
+// 년, 월, 일, 요일 구하기
+let year_t = today.getFullYear();
+let month_t = today.getMonth() + 1; // 월은 0부터 시작하므로 1을 더함
+let day_t = today.getDate();
 
-  let currentDate = new Date(year, month, day);
+let month_tt = (today.getMonth() + 1).toString().padStart(2, "0");
+let day_tt = today.getDate().toString().padStart(2, "0"); // 일을 2자리로 표시
 
-  // 현재 달의 마지막 날짜를 구함
-  const lastDayOfMonth = new Date(year, month + 1, 0).getDate();
+let daysOfWeek_asdasdasd = ["일", "월", "화", "수", "목", "금", "토"][
+  today.getDay()
+];
+// let dayName_t = daysOfWeek_t[dayOfWeek_t];
+let dayOfWeek_t;
+// 출력 포맷 지정
+let formattedDate_tt = `${year_t}${month_tt}${day_tt}`;
+let formattedDate_t = `${year_t}년 ${month_t}월 ${day_t}일 ${daysOfWeek_asdasdasd}요일`;
 
-  // 날짜를 더하되, 현재 달의 마지막 날을 넘어가면 다음 달로 이동
-  currentDate.setDate(currentDate.getDate() + daysToAdd);
-  while (currentDate.getDate() > lastDayOfMonth) {
-      currentDate.setDate(currentDate.getDate() - lastDayOfMonth);
-      currentDate.setMonth(currentDate.getMonth() + 1);
-      lastDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
+// 결과 출력
+console.log(formattedDate_t);
+console.log(formattedDate_tt);
+
+let lines;
+let kepler;
+let mainTable_view = "";
+let TableForPre;
+let itrt_num;
+let realTable; // 배열 초기화 추가
+let wk1
+let wk2
+
+
+function createTimetable(data) {
+  const tableContainer = document.getElementById("table-container");
+
+  // 새로운 테이블 엘리먼트 생성
+  const table = document.createElement("table");
+  table.classList.add("timetable"); // 테이블에 클래스 추가
+  table.border = "1";
+
+  // 헤더 행 생성
+  const headerRow = table.insertRow();
+  const headerClassCell = headerRow.insertCell();
+  headerClassCell.textContent = "반";
+  headerClassCell.classList.add("class-header"); // 반 헤더 셀에 클래스 추가
+
+  // 각 교시에 대한 열 생성
+  for (const time in timetableData["1반"]) {
+    const headerCell = headerRow.insertCell();
+    headerCell.textContent = time;
+    headerCell.classList.add("time-header"); // 교시 헤더 셀에 클래스 추가
   }
 
-  const newYear = currentDate.getFullYear();
-  const newMonth = (currentDate.getMonth() + 1).toString().padStart(2, '0');
-  const newDay = currentDate.getDate().toString().padStart(2, '0');
+  // 각 반에 대한 행 생성
+  for (const className in data) {
+    const classData = data[className];
 
-  return `${newYear}${newMonth}${newDay}`;
+    // 행 생성
+    const row = table.insertRow();
+    row.classList.add("class-row"); // 반 행에 클래스 추가
+
+    const classCell = row.insertCell();
+    classCell.textContent = className;
+    classCell.classList.add("class-header"); // 반 헤더 셀에 클래스 추가
+
+    // 반의 데이터에 대한 열 생성
+    for (const time in classData) {
+      const cell = row.insertCell();
+      cell.textContent = classData[time];
+      cell.classList.add("class-cell"); // 각 셀에 클래스 추가
+    }
+  }
+
+  // 테이블을 컨테이너에 추가
+  tableContainer.appendChild(table);
 }
 
-let lines = '';
-function bab(whatday) {
+
+// 시간표 불러오기 함수
+async function ttr(whatgrade, whatclass, whatday) {
+  console.log("시간표 함수 작동"); // 삭제
+
   // API 엔드포인트 URL
-  const bab_api_url = "https://open.neis.go.kr/hub/mealServiceDietInfo";
+  const tt_api_url = "https://open.neis.go.kr/hub/hisTimetable";
   
   // 필요한 파라미터 설정
-  const bab_params = {
+  const tt_params = {
     KEY: "c14d61fef8954d718ab4d1f10bbae173",
     ATPT_OFCDC_SC_CODE: "Q10",
     SD_SCHUL_CODE: "8490058",
-    MMEAL_SC_CODE: "2",
-    MLSV_YMD: whatday,
-    // MLSV_YMD: "20230913",
+    ALL_TI_YMD: whatday,
+    GRADE: whatgrade,
+    CLASS_NM: whatclass,
   };
   
-  // API 요청 보내기
-  fetch(`${bab_api_url}?${new URLSearchParams(bab_params)}`)
-    .then((response) => response.text())
-    .then((full_text) => {
-      // 줄 단위로 나누기
-      lines = full_text.split("\n");
+  try {
+    // API 요청 보내기
+    const response = await fetch(
+      `${tt_api_url}?${new URLSearchParams(tt_params)}`
+    );
+    const full_text = await response.text();
 
-      let lunch_menu = lines[1]
-
-      if (lines[2][2] == 'm') {
-        lunch_menu = lines[19];
+    // 줄 단위로 나누기
+    mainTable_view = '';
+    lines = full_text.split("\n");
+    kepler = lines[2];
+    // console.log(kepler_t);
+    itrt_num = "";
+    if (kepler[1] == "h") {
+      // 리스트의 각 요소를 확인
+      for (let i = 0; i < lines.length; i++) {
+        if (lines[i].includes("ITRT_CNTNT")) {
+          itrt_num = String(lines[i]);
+          itrt_num = itrt_num.substring(25, 34);
+          itrt_num = itrt_num.replace("[보강]", "bogang ");
+          itrt_num = itrt_num.replace("]", "");
+          itrt_num = itrt_num.replace("]", "");
+          itrt_num = itrt_num.replace(">", "");
+          itrt_num = itrt_num.replace("<", "");
+          itrt_num = itrt_num.replace("/", "");
+          itrt_num = itrt_num.replace("I", "");
+          itrt_num = itrt_num.replace("Ⅰ", "");
+          itrt_num = itrt_num.replace("T", "");
+          itrt_num = itrt_num.replace("bogang", "[보강]"); // 다듬기
+          // console.log(itrt_num);
+          mainTable_view += itrt_num + "\n";
+          realTable = mainTable_view.split("\n");
+        } 
       }
-      else {
-        lunch_menu = lines[3];
-      }
-
-      // 필요없는 것들 제거
-      let cleanThings = lunch_menu;
-      const removeNumbers = /[0-9]/g;
-      const removeSpecial = /[<>!().[\]]/g;
-      cleanThings = cleanThings
-        .replace(removeNumbers, "")
-        .replace(removeSpecial, "");
-      cleanThings = cleanThings.replace("/DDISH_NM", "");
-      cleanThings = cleanThings.replace("DDISH_NM", "");
-      cleanThings = cleanThings.replace("DDISH_NM", "");
-      cleanThings = cleanThings.replace("CDATA", "");
-      cleanThings = cleanThings.replace("br/", "\n");
-      cleanThings = cleanThings.replace("br/", "\n");
-      cleanThings = cleanThings.replace("br/", "\n");
-      cleanThings = cleanThings.replace("br/", "\n");
-      cleanThings = cleanThings.replace("br/", "\n");
-      cleanThings = cleanThings.replace("br/", "\n");
-      cleanThings = cleanThings.replace("br/", "\n");
-      cleanThings = cleanThings.replace("/", " + ");
-      cleanThings = cleanThings.replace("/", " + ");
-      cleanThings = cleanThings.replace("/", " + ");
-      cleanThings = cleanThings.replace("/", " + ");
-
-      let menuResult = cleanThings.substring(4);
-
-      // 날짜 + 결과를 HTML에 표시
-      let menuResultContainer = document.getElementById("menuResultContainer");
-      menuResultContainer.innerText = friendlyDate + "\n\n" + menuResult;
-  
-      // 날짜를 HTML에 표시
-      let dateDisplayElement = document.getElementById("dateDisplay");
-      dateDisplayElement.innerText = `${friendlyDate}`;
-  
-      console.log(menuResult); // 테스트용 로그 표시
-      })
-      .catch((error) => console.error(error));
     }
+    if (kepler[1] == "R") {
+      mainTable_view = "\nX";
+      realTable = mainTable_view.split("\n");
+    } 
 
-let babday = addDaysToDate(formattedDate, 0); // 수정된 부분
+    TableForPre = mainTable_view;
+    const DisplayTable1 = document.getElementById("timeTables1");
+    DisplayTable1.innerText = TableForPre;
+    
+    wk1 = realTable[1]
+    wk2 = realTable[2]
+    console.log(wk2)
 
-document.addEventListener("DOMContentLoaded", function () {
-  let asd = 0; // 초기 값 설정
 
-  // HTML 요소 참조
-  const valueDisplay = document.getElementById("valueDisplay");
-  const leftArrow = document.getElementById("leftArrow");
-  const rightArrow = document.getElementById("rightArrow");
-  
-  // 초기 값 표시
-  updateDisplay();
-  
-  // 왼쪽 화살표 클릭 시 이벤트 리스너 등록
-  leftArrow.addEventListener("click", function () {
-    asd -= 1;
-    updateDisplay();
-    babday = addDaysToDate(formattedDate, asd); // 수정된 부분
-    babday = String(babday)
-    bab(babday);
-    console.log(babday);
-    console.log(lines[2]);
-  });
-  
-  // 오른쪽 화살표 클릭 시 이벤트 리스너 등록
-  rightArrow.addEventListener("click", function () {
-    asd += 1;
-    updateDisplay();
-    babday = addDaysToDate(formattedDate, asd); // 수정된 부분
-    babday = String(babday)
-    bab(babday);
-    console.log(babday);
-    console.log(lines[2]);
-  });
-
-  // 값 업데이트 및 표시 함수
-  function updateDisplay() {
-    valueDisplay.textContent = asd;
+    console.log(TableForPre); // 테스트용 로그 표시
+  } catch (error) {
+    console.error(error);
   }
-});
+} 
+
+// 표 생성 함수
+
+ttr(1, 1, 20240306);
+
+const timetableData = {
+  "1반": {
+    "1교시": '3',
+    "2교시": wk2,
+    "3교시": '3',
+    "4교시": '3',
+    "5교시": '3',
+    "6교시": '3',
+    "7교시": '3',
+  },
+  "2반": {
+    "1교시": "국어",
+    "2교시": "영어",
+    "3교시": "수학",
+    "4교시": "사회",
+    "5교시": "과학",
+    "6교시": "기가",
+    "7교시": "음악",
+  },
+  "3반": {
+    "1교시": "",
+    "2교시": "",
+    "3교시": "",
+    "4교시": "",
+    "5교시": "",
+    "6교시": "",
+    "7교시": "",
+  },
+  "4반": {
+    "1교시": "",
+    "2교시": "",
+    "3교시": "",
+    "4교시": "",
+    "5교시": "",
+    "6교시": "",
+    "7교시": "",
+  },
+  "5반": {
+    "1교시": "",
+    "2교시": "",
+    "3교시": "",
+    "4교시": "",
+    "5교시": "",
+    "6교시": "",
+    "7교시": "",
+  },
+  "6반": {
+    "1교시": "",
+    "2교시": "",
+    "3교시": "",
+    "4교시": "",
+    "5교시": "",
+    "6교시": "",
+    "7교시": "",
+  },
+  "7반": {
+    "1교시": "",
+    "2교시": "",
+    "3교시": "",
+    "4교시": "",
+    "5교시": "",
+    "6교시": "",
+    "7교시": "",
+  },
+  "8반": {
+    "1교시": "",
+    "2교시": "",
+    "3교시": "",
+    "4교시": "",
+    "5교시": "",
+    "6교시": "",
+    "7교시": "",
+  },
+};
+
+console.log(wk2)
+
+
+// 표 생성 함수 호출
+createTimetable(timetableData);

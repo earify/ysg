@@ -1,124 +1,179 @@
-// 표를 만들 데이터
-const timetableData = {
-  '1반': {
-      '1교시': '국어',
-      '2교시': '영어',
-      '3교시': '수학',
-      '4교시': '사회',
-      '5교시': '과학',
-      '6교시': '', // 비어있는 셀
-      '7교시': '', // 비어있는 셀
-  },
-  '2반': {
-      '1교시': '국어',
-      '2교시': '영어',
-      '3교시': '수학',
-      '4교시': '사회',
-      '5교시': '과학',
-      '6교시': '기가',
-      '7교시': '음악',
-  },
-  '3반': {
-      '1교시': '',
-      '2교시': '',
-      '3교시': '',
-      '4교시': '',
-      '5교시': '',
-      '6교시': '',
-      '7교시': '',
-  },
-  '4반': {
-      '1교시': '',
-      '2교시': '',
-      '3교시': '',
-      '4교시': '',
-      '5교시': '',
-      '6교시': '',
-      '7교시': '',
-  },
-  '5반': {
-      '1교시': '',
-      '2교시': '',
-      '3교시': '',
-      '4교시': '',
-      '5교시': '',
-      '6교시': '',
-      '7교시': '',
-  },
-  '6반': {
-      '1교시': '',
-      '2교시': '',
-      '3교시': '',
-      '4교시': '',
-      '5교시': '',
-      '6교시': '',
-      '7교시': '',
-  },
-  '7반': {
-      '1교시': '',
-      '2교시': '',
-      '3교시': '',
-      '4교시': '',
-      '5교시': '',
-      '6교시': '',
-      '7교시': '',
-  },
-  '8반': {
-      '1교시': '',
-      '2교시': '',
-      '3교시': '',
-      '4교시': '',
-      '5교시': '',
-      '6교시': '',
-      '7교시': '',
-  },
-};
+// 오늘 날짜 구하기
+const today = new Date();
 
-// 표 생성 함수
-function createTimetable(data) {
-  const tableContainer = document.getElementById('table-container');
+// 년, 월, 일, 요일 구하기
+let year_t = today.getFullYear();
+let month_t = today.getMonth() + 1; // 월은 0부터 시작하므로 1을 더함
+let day_t = today.getDate();
 
-  // 새로운 테이블 엘리먼트 생성
-  const table = document.createElement('table');
-  table.classList.add('timetable'); // 테이블에 클래스 추가
-  table.border = '1';
+let month_tt = (today.getMonth() + 1).toString().padStart(2, "0");
+let day_tt = today.getDate().toString().padStart(2, "0"); // 일을 2자리로 표시
 
-  // 헤더 행 생성
-  const headerRow = table.insertRow();
-  const headerClassCell = headerRow.insertCell();
-  headerClassCell.textContent = '반';
-  headerClassCell.classList.add('class-header'); // 반 헤더 셀에 클래스 추가
+let daysOfWeek_asdasdasd = ["일", "월", "화", "수", "목", "금", "토"][
+  today.getDay()
+];
+// let dayName_t = daysOfWeek_t[dayOfWeek_t];
+let dayOfWeek_t;
+// 출력 포맷 지정
+let formattedDate_tt = `${year_t}${month_tt}${day_tt}`;
+let formattedDate_t = `${year_t}년 ${month_t}월 ${day_t}일 ${daysOfWeek_asdasdasd}요일`;
 
-  // 각 교시에 대한 열 생성
-  for (const time in timetableData['1반']) {
-      const headerCell = headerRow.insertCell();
-      headerCell.textContent = time;
-      headerCell.classList.add('time-header'); // 교시 헤더 셀에 클래스 추가
-  }
+// 결과 출력
+console.log(formattedDate_t);
+console.log(formattedDate_tt);
 
-  // 각 반에 대한 행 생성
-  for (const className in data) {
-      const classData = data[className];
+// 변수들 선언
+let lines;
+let kepler;
+let mainTable_view = "";
+let TableForPre;
+let itrt_num;
+let wk1;
+let wk2;
+let wtf;
+let realTable = []// 배열 초기화 추가
+let titr1;
+let table;
 
-      // 행 생성
-      const row = table.insertRow();
-      row.classList.add('class-row'); // 반 행에 클래스 추가
+async function ttr(whatgrade, whatclass, whatday) {
+  console.log("시간표 함수 작동"); // 삭제
+  
+  // API 엔드포인트 URL
+  const tt_api_url = "https://open.neis.go.kr/hub/hisTimetable";
+  
+  // 필요한 파라미터 설정
+  const tt_params = {
+    KEY: "c14d61fef8954d718ab4d1f10bbae173",
+    ATPT_OFCDC_SC_CODE: "Q10",
+    SD_SCHUL_CODE: "8490058",
+    ALL_TI_YMD: whatday,
+    GRADE: whatgrade,
+    CLASS_NM: whatclass,
+  };
 
-      const classCell = row.insertCell();
-      classCell.textContent = className;
-      classCell.classList.add('class-header'); // 반 헤더 셀에 클래스 추가
+  try {
+    // API 요청 보내기
+    const response = await fetch(
+      `${tt_api_url}?${new URLSearchParams(tt_params)}`
+    );
+    const full_text = await response.text();
 
-      // 반의 데이터에 대한 열 생성
-      for (const time in classData) {
-          const cell = row.insertCell();
-          cell.textContent = classData[time];
-          cell.classList.add('class-cell'); // 각 셀에 클래스 추가
+    // 줄 단위로 나누기
+    mainTable_view = "";
+    lines = full_text.split("\n");
+    kepler = lines[2];
+    // console.log(kepler_t);
+    itrt_num = "";
+    if (kepler[1] == "h") {
+      // 리스트의 각 요소를 확인
+      for (let i = 0; i < lines.length; i++) {
+        if (lines[i].includes("ITRT_CNTNT")) {
+          itrt_num = String(lines[i]);
+          itrt_num = itrt_num.substring(25, 34);
+          itrt_num = itrt_num.replace("[보강]", "bogang ");
+          itrt_num = itrt_num.replace("]", "");
+          itrt_num = itrt_num.replace("]", "");
+          itrt_num = itrt_num.replace(">", "");
+          itrt_num = itrt_num.replace("<", "");
+          itrt_num = itrt_num.replace("/", "");
+          itrt_num = itrt_num.replace("I", "");
+          itrt_num = itrt_num.replace("Ⅰ", "");
+          itrt_num = itrt_num.replace("T", "");
+          itrt_num = itrt_num.replace("bogang", "[보강]"); // 다듬기
+          // console.log(itrt_num);
+          mainTable_view += itrt_num + "\n";
+          realTable = mainTable_view.split("\n");
+        }
       }
-  }
+    }
+    if (kepler[1] == "R") {
+      mainTable_view = "\nX";
+      realTable = mainTable_view.split("\n");
+    } 
 
-  // 테이블을 컨테이너에 추가
-  tableContainer.appendChild(table);
+    titr1 = realTable;
+    // 표에 시간표 넣기
+    for (let i = 1; i <= 7; i++) {
+      console.log(realTable)
+      table[i - 1][2] = realTable[i - 1];
+    }
+    
+  } catch (error) {
+    console.error(error);
+  }
 }
 
-// 표 생성 함수 호출
-createTimetable(timetableData);
+
+console.log("realTable:", realTable);
+console.log("표 데이터:", titr1);
+
+document.addEventListener("DOMContentLoaded", function () {
+  let tnt = ['국어','수학','사회','과학','영어','기가','사회탐구'];
+  const rows = 7; // 세로 칸 수
+  const cols = 9; // 가로 칸 수
+  
+  // 열의 제목과 행의 제목 생성
+  const columnTitles = [
+    "교시/반",
+    "1반",
+    "2반",
+    "3반",
+    "4반",
+    "5반",
+    "6반",
+    "7반",
+    "8반",
+  ];
+  const rowTitles = [
+    "1교시",
+    "2교시",
+    "3교시",
+    "4교시",
+    "5교시",
+    "6교시",
+    "7교시",
+  ];
+  
+  // 표 초기화 및 배열 생성
+  let table = new Array(rows);
+  for (let i = 0; i < rows; i++) {
+    table[i] = new Array(cols);
+    for (let j = 0; j < cols; j++) {
+      table[i][j] = "";
+    }
+  }
+  
+  ttr(1, 1, 20240308);
+  // 표에 시간표 넣기
+  // for (let i = 1; i <= 7; i++) {
+    //   table[i - 1][1] = tnt[i - 1];
+    // }
+    
+    // 표를 생성하여 HTML에 추가
+    const tableContainer = document.getElementById("table-container");
+    const createdTable = document.createElement("table");
+    
+    // 열의 제목 추가
+    const titleRow = createdTable.insertRow();
+    for (let i = 0; i < cols; i++) {
+      const titleCell = titleRow.insertCell();
+      titleCell.textContent = columnTitles[i];
+    }
+    
+    // 행과 열의 제목 추가 (데이터는 비워져 있음)
+    for (let i = 0; i < rows; i++) {
+      const dataRow = createdTable.insertRow();
+      const rowTitleCell = dataRow.insertCell();
+      rowTitleCell.textContent = rowTitles[i];
+      
+      for (let j = 1; j < cols; j++) {
+        const dataCell = dataRow.insertCell();
+        dataCell.textContent = table[i][j];
+      }
+    }
+    
+    console.log("제발요2");
+    // 생성한 표를 HTML에 추가
+    tableContainer.appendChild(createdTable);
+  });
+  

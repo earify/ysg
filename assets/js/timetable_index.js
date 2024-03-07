@@ -30,7 +30,7 @@ let TableForPre;
 let itrt_num;
 // let friendlyDate;
 
-async function timeTable_run(whatday, whatclass) {
+async function timeTable_run(whatgrade, whatclass, whatday) {
     console.log('시간표 함수 작동') //삭제
 
 	// API 엔드포인트 URL
@@ -42,7 +42,7 @@ async function timeTable_run(whatday, whatclass) {
 		ATPT_OFCDC_SC_CODE: "Q10",
 		SD_SCHUL_CODE: "8490058",
 		ALL_TI_YMD: whatday,
-		GRADE: "1",
+		GRADE: whatgrade,
 		CLASS_NM: whatclass,
 	};
 
