@@ -1,5 +1,6 @@
-let currentMonth = 2; // 5월부터 시작
+let currentMonth = 3; // 3월부터 시작
 let currentYear = 2024;
+
 
 function updateCalendar() {
   const calendarElement = document.getElementById("currentCalendar");
@@ -54,13 +55,89 @@ function updateCalendar() {
           dayElement.classList.add("saturday");
         }
 
-        // 특정 날짜에 이벤트 추가 (2024년 5월 15일에 "사과" 추가)
-        if (currentYear === 2024 && currentMonth === 2 && currentDay === 15) {
-          const eventElement = document.createElement("div");
-          eventElement.classList.add("event");
-          eventElement.innerText = "중간고사 같은 쪽지시험\n기말고사\n3월모고\n국어생일";
-          dayElement.appendChild(eventElement);
+        // 그냥 함수
+        function addEvent(y,m,d,whatevent){
+          // 특정 날짜에 이벤트 추가 (2024년 5월 15일에 "사과" 추가)
+          if (currentYear === y && currentMonth  === m && currentDay === d) {
+            const eventElement = document.createElement("div");
+            eventElement.classList.add("event");
+            eventElement.innerText = whatevent;
+            dayElement.appendChild(eventElement);
+          }
         }
+
+        // for (i = 1; i <= 12; i++){
+        //   for (j = 1; j <= 31; i++){
+        //     if (i==3, )
+        // }
+        addEvent(2024,3,4,"신입생 OT")
+        addEvent(2024,3,15,"1-7,8 건강검진")
+        addEvent(2024,3,22,"3-교육과정설명회")
+        addEvent(2024,3,25,"2-교육과정설명회")
+        addEvent(2024,3,26,"1-교육과정설명회")
+        addEvent(2024,3,28,"모의고사")
+        addEvent(2024,4,9,"1-영어듣기평가")
+        addEvent(2024,4,11,"2-영어듣기평가")
+        addEvent(2024,4,12,"3-영어듣기평가")
+        addEvent(2024,4,10,"22대 국회의원 선거(?)")
+        addEvent(2024,4,15,"체육대회")
+        addEvent(2024,4,16,"체육대회")
+        addEvent(2024,5,1,"중간고사 (점심없음)")
+        addEvent(2024,5,2,"중간고사")
+        addEvent(2024,5,3,"중간고사")
+        addEvent(2024,5,6,"대체휴일")
+        addEvent(2024,5,8,"3-모의고사")
+        addEvent(2024,5,13,"1-1,2 건강검진")
+        addEvent(2024,5,14,"1-3,4 건강검진")
+        addEvent(2024,5,16,"1-5,6 건강검진")
+        addEvent(2024,5,27,"수련회\n수학여행\n3-단축수업")
+        addEvent(2024,5,28,"수련회\n수학여행\n3-단축수업")
+        addEvent(2024,5,29,"수련회\n수학여행\n3-단축수업")
+        addEvent(2024,5,30,"에듀페어 박람회\n3-단축수업")
+        addEvent(2024,5,31,"3-단축수업")
+        addEvent(2024,6,4,"모의고사")
+        addEvent(2024,6,7,"재량휴업")
+        addEvent(2024,6,13,"학부모 공개수업")
+        addEvent(2024,7,2,"1-기말고사")
+        addEvent(2024,7,3,"1-기말고사")
+        addEvent(2024,7,4,"1-기말고사")
+        addEvent(2024,7,5,"1-기말고사")
+        addEvent(2024,7,11,"3-모의고사")
+        addEvent(2024,7,18,"사정회")
+        addEvent(2024,7,19,"여름방학 선언")
+        
+        addEvent(2024,7,22,"여름방학 방과후~")
+        addEvent(2024,8,2,"~여름방학 방과후")
+        
+        addEvent(2024,8,16,"개학")
+        addEvent(2024,9,4,"모의고사")
+        addEvent(2024,9,9,"3-중간고사")
+        addEvent(2024,9,10,"3-중간고사\n1-영어듣기")
+        addEvent(2024,9,11,"3-중간고사\n2-영어듣기")
+        addEvent(2024,9,12,"3-영어듣기")
+        addEvent(2024,9,30,"1,2-중간고사\n3-기말고사")
+        addEvent(2024,10,1,"개교기념일\n1,2-중간고사\n3-기말고사")
+        addEvent(2024,10,2,"1,2-중간고사\n3-기말고사")
+        addEvent(2024,10,4,"재량휴업일")
+        addEvent(2024,10,15,"모의고사")
+        addEvent(2024,10,25,"자공고 수업 나눔의 날\n학부모 공개수업")
+        addEvent(2024,10,31,"3-J-FINAL 모의고사")
+        addEvent(2024,11,14,"2-재량휴업\n3-수능")
+        addEvent(2024,12,4,"1,2-기말고사")
+        addEvent(2024,12,5,"1,2-기말고사")
+        addEvent(2024,12,6,"1,2-기말고사")
+        addEvent(2024,12,9,"1,2-기말고사")
+        addEvent(2024,12,10,"1,2-단축수업")
+        addEvent(2024,12,11,"1,2-단축수업")
+        addEvent(2024,12,12,"1,2-단축수업")
+        addEvent(2024,12,13,"1,2-단축수업")
+        addEvent(2024,12,26,"사정회")
+        addEvent(2024,12,27,"장대축제")
+        addEvent(2024,12,31,"겨울방학 선언")
+        addEvent(2024,12,1,"2")
+        addEvent(2024,12,1,"2")
+        addEvent(2024,12,1,"2")
+
 
         currentDay++;
       }
