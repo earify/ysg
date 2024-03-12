@@ -134,9 +134,7 @@ function updateCalendar() {
         addEvent(2024,12,26,"사정회")
         addEvent(2024,12,27,"장대축제")
         addEvent(2024,12,31,"겨울방학 선언")
-        addEvent(2024,12,1,"2")
-        addEvent(2024,12,1,"2")
-        addEvent(2024,12,1,"2")
+
 
 
         currentDay++;

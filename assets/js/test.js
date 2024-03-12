@@ -108,6 +108,7 @@ async function ttr(whatgrade, whatclass, whatday) {
           itrt_num = itrt_num.replace("한국사", "국사");
           itrt_num = itrt_num.replace("자율활동", "자율");
           itrt_num = itrt_num.replace("동아리활동", "동아리");
+          itrt_num = itrt_num.replace("토요휴업일", "토요일");
 
           // console.log(itrt_num);
           mainTable_view += itrt_num + "\n";
@@ -167,10 +168,12 @@ document.addEventListener("DOMContentLoaded", function () {
   async function plzman(tabledate) {
     console.log("plzman");
     const tableContainer = document.getElementById("table-container");
-    
+    console.log(createdTable)
     if (createdTable) {
+      console.log("삭제함")
       tableContainer.removeChild(createdTable);
     }
+
     // 새로운 표 생성
     createdTable = document.createElement("table");
     tableContainer.appendChild(createdTable);
@@ -228,7 +231,6 @@ document.addEventListener("DOMContentLoaded", function () {
   
     // 왼쪽 화살표 클릭 시 이벤트 리스너 등록
     leftArrow.addEventListener("click", function () {
-      createdTable = 0;
       movedate -= 1;
       maintabledate = addDaysToDate(formattedDate_tt, movedate);
       console.log("왼쪽");
@@ -239,7 +241,6 @@ document.addEventListener("DOMContentLoaded", function () {
   
     // 오른쪽 화살표 클릭 시 이벤트 리스너 등록
     rightArrow.addEventListener("click", function () {
-      createdTable = 0;
       movedate += 1;
       maintabledate = addDaysToDate(formattedDate_tt, movedate);
       console.log("오른쪽");

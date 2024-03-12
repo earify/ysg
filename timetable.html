@@ -9,13 +9,13 @@
 		<title>여수고 급식</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<!-- <link rel="stylesheet" href="assets/css/bab.css" /> -->
+		<!-- <link rel="stylesheet" href="assets/css/c.css" /> -->
 		<link rel="stylesheet" href="assets/css/font.css" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		
 		<style>
-			body {
+        body {
 				background-color: #252525;
 				/* 검은색 배경 색상을 여기에 지정하세요 */
 				color: #fffffe;
@@ -25,6 +25,42 @@
 				color: #252525;
 				font-family: 'jalnan';
 			}
+        table {
+            border-collapse: collapse;
+            width: 80%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        /* 짝수 행 배경색 */
+        tr:nth-child(even) {
+          background-color: #444444;
+          color: white;
+          font-family: 'SBAggroM';
+          width: 10px;
+        } 
+        tr:nth-child(odd) {
+          background-color: #666666;
+          color: white;
+          font-family: 'SBAggroM';
+        }
+        
+        
+        /* 첫 번째 열 배경색 */
+        td:first-child {
+          background-color: #4285f4;
+          color: white;
+          font-family: 'jalnan', sans-serif;
+        }
+          tr:nth-child(1) {
+            background-color: #9090f5;
+            color: #4285f4;
+            font-family: 'jalnan', sans-serif;
+          }
+
 		</style>
 	</head>
 	<body class="is-preload">
@@ -68,12 +104,13 @@
 							<h1 class="jal">시간표</h1>
 							<!-- <span class="image main"><img src="images/pic13.jpg" alt="" /></span> -->
 							<body>
-								<div id="yyddmm"></div>
-								<button id="leftArrow">←</button>
-								<span id="valueDisplay">0일 후</span>
-								<button id="rightArrow">→</button>
-								<div id="webDate"></div>
-								<div id="timeTables2"></div>
+                <span id="whattimeday"></span>
+                <p></p>
+                <button id="leftArrow">←</button>
+                <span id="valueDisplay">0일 후</span>
+                <button id="rightArrow">→</button>
+                <p></p>
+                <div id="table-container"></div>
 						</body>
 							
 							<p>hi</p>
