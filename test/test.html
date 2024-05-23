@@ -9,10 +9,19 @@
 </head>
 <body>
   <div class="card">
-    <div class="top-left">A<br>&#9824;</div>
-    <div class="center">A<br>&#9829;</div>
-    <div class="bottom-right">A<br>&#9827;</div>
+    <div class="top-left"></div>
+    <div class="center"></div>
+    <div class="bottom-right"></div>
   </div>
-  <button onclick="drawCard()">카드 뽑기</button>
+  <label for="betAmount">배팅 금액:</label>
+  <input type="number" id="betAmount" name="betAmount" min="1">
+  <br>
+  <button onclick="predict('higher')">숫자 높을 것</button>
+  <button onclick="predict('lower')">숫자 낮을 것</button>
+  <button onclick="predict('red')">빨간색일 것</button>
+  <button onclick="predict('black')">검은색일 것</button>
+  <button onclick="startBetting()">배팅 시작</button>
+  <button onclick="cancelPrediction()">예측 취소</button>
+  <p id="predictionStatus">예측 상태: 아직 예측되지 않음</p>
 </body>
 </html>
