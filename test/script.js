@@ -1,8 +1,11 @@
-let originalCard = cardGen();
+let originalCard;
 let money = 1000;
 let prediction = null;
 
-document.getElementById('original-card').textContent = `원래 카드: ${originalCard}`;
+window.onload = function() {
+    originalCard = cardGen();
+    document.getElementById('original-card').textContent = `원래 카드: ${originalCard}`;
+}
 
 function cardGen() {
     const suits = ['♠', '♥', '♦', '♣'];
@@ -72,15 +75,22 @@ function startBetting() {
     const newCard = cardGen();
     const resultMessage = cal(originalCard, newCard, prediction);
 
-    const newCardColorClass = (newCard.includes('♥') || newCard.includes('♦')) ? 'red' : 'black';
+    const newCardRank = newCard.split(' ')[0];
+    const newCardSuit = newCard.split(' ')[1];
+    const newCardColorClass = (newCardSuit === '♥' || newCardSuit === '♦') ? 'red' : 'black';
 
-    document.getElementById('new-card-top').textContent = `${newCard.split(' ')[0]}`;
-    document.getElementById('new-card-top').className = newCardColorClass;
-    document.getElementById('new-card-center').textContent = `${newCard.split(' ')[0]}`;
+    document.getElementById('new-card-rank-top').textContent = newCardRank;
+    document.getElementById('new-card-suit-top').textContent = newCardSuit;
+    document.getElementById('new-card-center').textContent = newCardSuit;
+    document.getElementById('new-card-rank-bottom').textContent = newCardRank;
+    document.getElementById('new-card-suit-bottom').textContent = newCardSuit;
+
+    document.getElementById('new-card-rank-top').className = newCardColorClass;
+    document.getElementById('new-card-suit-top').className = newCardColorClass;
     document.getElementById('new-card-center').className = newCardColorClass;
-    document.getElementById('new-card-bottom').textContent = `${newCard.split(' ')[1]}`;
-    document.getElementById('new-card-bottom').className = newCardColorClass;
-    
+    document.getElementById('new-card-rank-bottom').className = newCardColorClass;
+    document.getElementById('new-card-suit-bottom').className = newCardColorClass;
+
     document.getElementById('result').textContent = `${resultMessage} 현재 잔액: ${money}원`;
 
     originalCard = newCard;
