@@ -1,0 +1,30 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+  margin: 0;
+}
+
+.card-container {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+#original-card, #new-card, #result {
+  font-size: 1.5em;
+  margin: 10px;
+  padding: 10px;
+  border: 2px solid #000;
+  border-radius: 10px;
+  background-color: #fff;
+  width: 500px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+}

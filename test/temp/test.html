@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trump Card Betting Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="card-container">
+        <div id="original-card">원래 카드: </div>
+        <div id="new-card">새로운 카드: </div>
+        <div id="result"></div>
+    </div>
+    <input type="number" id="bet-amount" placeholder="배팅 금액을 입력하세요">
+    <button onclick="placeBet('higher')">숫자가 더 크다</button>
+    <button onclick="placeBet('lower')">숫자가 더 작다</button>
+    <button onclick="placeBet('red')">문양의 색깔이 빨간색이다</button>
+    <button onclick="placeBet('black')">문양의 색깔이 검은색이다</button>
+    <script src="script.js"></script>
+</body>
+</html>
