@@ -121,3 +121,5 @@ function betting_calculator(OC, prediction) {
 
     return betting_multiplier;
 }
+
+console.log('왜 안됨?')
