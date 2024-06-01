@@ -1,100 +1,123 @@
-let originalCard;
+let originalCard = cardGen();
 let money = 1000;
-let prediction = null;
+let prediction = "";
 
-window.onload = function() {
-    originalCard = cardGen();
-    document.getElementById('original-card').textContent = `원래 카드: ${originalCard}`;
-}
+document.addEventListener("DOMContentLoaded", () => {
+    displayCard("new-card", originalCard);
+    updateStatus();
+});
 
 function cardGen() {
-    const suits = ['♠', '♥', '♦', '♣'];
-    const ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+    const suits = ["♠", "♥", "♦", "♣"];
+    const ranks = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
     const randomSuit = suits[Math.floor(Math.random() * suits.length)];
     const randomRank = ranks[Math.floor(Math.random() * ranks.length)];
     return `${randomRank} ${randomSuit}`;
 }
 
-function cal(a, b, prediction) {
-    let resultMessage = '다시 시도하세요!';
-    const betAmount = parseInt(document.getElementById('betAmount').value);
-    let winnings = 0;
+function displayCard(elementId, card) {
+    const [rank, suit] = card.split(" ");
+    const isRed = suit === "♥" || suit === "♦";
 
-    const rankOrder = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
-    const aRank = rankOrder.indexOf(a.split(' ')[0]);
-    const bRank = rankOrder.indexOf(b.split(' ')[0]);
+    const cardElement = document.getElementById(elementId);
+    cardElement.classList.toggle("red", isRed);
 
-    const bColor = (b.includes('♥') || b.includes('♦')) ? 'red' : 'black';
+    document.getElementById("new-card-rank-top").textContent = rank;
+    document.getElementById("new-card-suit-top").textContent = suit;
+    document.getElementById("new-card-center").textContent = suit;
+    document.getElementById("new-card-rank-bottom").textContent = rank;
+    document.getElementById("new-card-suit-bottom").textContent = suit;
 
-    if (prediction === 'higher' && bRank > aRank) {
-        winnings = 2 * betAmount;
-        money += winnings;
-        resultMessage = `와 샌즈! 배팅에 성공하여 ${winnings}원을 벌었습니다!`;
-    } else if (prediction === 'lower' && bRank < aRank) {
-        winnings = 2 * betAmount;
-        money += winnings;
-        resultMessage = `와 샌즈! 배팅에 성공하여 ${winnings}원을 벌었습니다!`;
-    } else if (prediction === 'red' && bColor === 'red') {
-        winnings = 2 * betAmount;
-        money += winnings;
-        resultMessage = `와 샌즈! 배팅에 성공하여 ${winnings}원을 벌었습니다!`;
-    } else if (prediction === 'black' && bColor === 'black') {
-        winnings = 2 * betAmount;
-        money += winnings;
-        resultMessage = `와 샌즈! 배팅에 성공하여 ${winnings}원을 벌었습니다!`;
+    const elements = [
+        "new-card-rank-top",
+        "new-card-suit-top",
+        "new-card-center",
+        "new-card-rank-bottom",
+        "new-card-suit-bottom"
+    ];
+
+    elements.forEach(elementId => {
+        document.getElementById(elementId).className = isRed ? 'red' : '';
+    });
+}
+
+function predict(pred) {
+    prediction = pred;
+    updateStatus();
+}
+
+function startBetting() {
+    if (!prediction) {
+        alert("예상을 선택하세요!");
+        return;
+    }
+
+    const betAmount = parseInt(document.getElementById("betAmount").value);
+
+    if (isNaN(betAmount) || betAmount <= 0) {
+        alert("유효한 배팅 금액을 입력하세요!");
+        return;
+    }
+
+    const newCard = cardGen();
+    const resultMessage = cal(originalCard, newCard, prediction, betAmount);
+
+    displayCard("new-card", newCard);
+    document.getElementById("result").textContent = resultMessage;
+    originalCard = newCard;
+    updateStatus();
+}
+
+function cal(a, b, prediction, betAmount) {
+    let resultMessage = "다시 시도하세요!";
+
+    const rankOrder = [
+        "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"
+    ];
+    const aRank = rankOrder.indexOf(a.split(" ")[0]);
+    const bRank = rankOrder.indexOf(b.split(" ")[0]);
+    const bSuit = b.split(" ")[1];
+    const bColor = bSuit === "♥" || bSuit === "♦" ? "red" : "black";
+
+    const bettingMultiplier = betting_calculator(aRank, prediction);
+
+    if (prediction === "higher" && bRank > aRank) {
+        money += betAmount * bettingMultiplier;
+        resultMessage = `축하합니다! ${betAmount * bettingMultiplier}원을 벌었습니다!`;
+    } else if (prediction === "lower" && bRank < aRank) {
+        money += betAmount * bettingMultiplier;
+        resultMessage = `축하합니다! ${betAmount * bettingMultiplier}원을 벌었습니다!`;
+    } else if ((prediction === "red" || prediction === "black") && bColor === prediction) {
+        money += betAmount * bettingMultiplier;
+        resultMessage = `축하합니다! ${betAmount * bettingMultiplier}원을 벌었습니다!`;
     } else {
-        resultMessage = '배팅에 실패하였습니다.';
+        money -= betAmount;
+        resultMessage = `아쉽습니다! ${betAmount}원을 잃었습니다.`;
     }
 
     return resultMessage;
 }
 
-function predict(pred) {
-    prediction = pred;
-    document.getElementById('predictionStatus').textContent = `예측 상태: ${pred}`;
+function updateStatus() {
+    document.getElementById("predictionStatus").textContent = `예측 상태: ${
+        prediction ? prediction : "아직 예측되지 않음"
+    }`;
+    document.getElementById("balance").textContent = `현재 잔액: ${money}원`;
 }
 
-function cancelPrediction() {
-    prediction = null;
-    document.getElementById('predictionStatus').textContent = '예측 상태: 아직 예측되지 않음';
-}
+function betting_calculator(OC, prediction) {
+    let betting_multiplier = 1.0;
 
-function startBetting() {
-    const betAmount = parseInt(document.getElementById('betAmount').value);
+    const higherMultipliers = [1.5, 1.5, 1.5, 1.75, 1.75, 1.75, 1.75, 2, 2, 2.5, 2.5, 3, 5];
+    const lowerMultipliers = [100, 5, 2.5, 2.5, 2, 2, 1.75, 1.75, 1.75, 1.75, 1.5, 1.5, 1.5];
 
-    if (isNaN(betAmount) || betAmount <= 0) {
-        alert('배팅 금액을 올바르게 입력하세요!');
-        return;
+    if (prediction === "higher") {
+        betting_multiplier = higherMultipliers[OC];
+    } else if (prediction === "lower") {
+        betting_multiplier = lowerMultipliers[OC];
+    } else if (prediction === "red" || prediction === "black") {
+        betting_multiplier = 1.25;
     }
 
-    if (!prediction) {
-        alert('예상을 선택하세요!');
-        return;
-    }
-
-    const newCard = cardGen();
-    const resultMessage = cal(originalCard, newCard, prediction);
-
-    const newCardRank = newCard.split(' ')[0];
-    const newCardSuit = newCard.split(' ')[1];
-    const newCardColorClass = (newCardSuit === '♥' || newCardSuit === '♦') ? 'red' : 'black';
-
-    document.getElementById('new-card-rank-top').textContent = newCardRank;
-    document.getElementById('new-card-suit-top').textContent = newCardSuit;
-    document.getElementById('new-card-center').textContent = newCardSuit;
-    document.getElementById('new-card-rank-bottom').textContent = newCardRank;
-    document.getElementById('new-card-suit-bottom').textContent = newCardSuit;
-
-    document.getElementById('new-card-rank-top').className = newCardColorClass;
-    document.getElementById('new-card-suit-top').className = newCardColorClass;
-    document.getElementById('new-card-center').className = newCardColorClass;
-    document.getElementById('new-card-rank-bottom').className = newCardColorClass;
-    document.getElementById('new-card-suit-bottom').className = newCardColorClass;
-
-    document.getElementById('result').textContent = `${resultMessage} 현재 잔액: ${money}원`;
-
-    originalCard = newCard;
-    document.getElementById('original-card').textContent = `원래 카드: ${originalCard}`;
-
-    cancelPrediction();
+    return betting_multiplier;
 }
