@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Firebase Authentication</title>
+<!-- Firebase JavaScript SDK -->
+<script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-database.js"></script>
+</head>
+<body>
+
+<h2>Firebase Authentication</h2>
+
+<form>
+  <label for="email">Email:</label><br>
+  <input type="email" id="email" name="email" required><br>
+  <label for="password">Password:</label><br>
+  <input type="password" id="password" name="password" required><br><br>
+  <button type="button" onclick="signIn()">로그인</button>
+  <button type="button" onclick="signUp()">회원가입</button>
+</form>
+
+<script>
+  // Firebase 설정 초기화
+  const firebaseConfig = {
+  apiKey: "AIzaSyCW_IvizOEOiLU96ODpb_zr-AS_3BF3tQo",
+  authDomain: "ysg-totoro.firebaseapp.com",
+  databaseURL: "https://ysg-totoro-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "ysg-totoro",
+  storageBucket: "ysg-totoro.appspot.com",
+  messagingSenderId: "552068912089",
+  appId: "1:552068912089:web:29e40221aef49bbf98ffc8",
+  measurementId: "G-WZV210EN3C"
+};
+  // Firebase 앱 초기화
+  firebase.initializeApp(firebaseConfig);
+
+  // 회원가입 함수
+  function signUp() {
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        // 회원가입 성공 시 동작
+        var user = userCredential.user;
+        console.log("User signed up:", user);
+      })
+      .catch((error) => {
+        // 회원가입 실패 시 동작
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.error("Error:", errorMessage);
+      });
+  }
+
+  // 로그인 함수
+  function signIn() {
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        // 로그인 성공 시 동작
+        var user = userCredential.user;
+        console.log("User signed in:", user);
+      })
+      .catch((error) => {
+        // 로그인 실패 시 동작
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.error("Error:", errorMessage);
+      });
+  }
+</script>
+
+</body>
+</html>
