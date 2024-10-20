@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>완벽한 룰렛</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="wheel-container">
+      <div class="pointer"></div>
+      <div id="wheel">
+        <div class="wheel-content">
+          <div class="text" data-value="초코파이">초<br>코<br>파<br>이</div>
+          <div class="text" data-value="하리보">하<br>리<br>보</div>
+          <div class="text" data-value="수건"></div>
+          <div class="text" data-value="꽝">꽝</div>
+        </div>
+      </div>
+    </div>
+    <button id="spinButton">돌리기</button>
+    <div id="result"></div>
+    <div id="totalAttempts">총 시도 횟수: 0</div> <!-- 총 시도 횟수 표시 추가 -->
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

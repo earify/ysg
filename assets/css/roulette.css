@@ -1,0 +1,120 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0;
+  font-family: 'Arial', sans-serif;
+}
+
+.container {
+  text-align: center;
+}
+
+.wheel-container {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin: 20px auto;
+}
+
+#wheel {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  transition: transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99);
+  border: 2px solid #333;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.wheel-content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  /* 15% 수건 (54도), 10% 초코파이 (54도), 0.5% 하리보 (3.6도), 74.5% 꽝 (302.4도) */
+  background: conic-gradient(
+    from 0deg,
+    #9e7642 0deg 54deg,    /* 수건 */
+    #ffef60 54deg 108deg,   /* 초코파이 */
+    #1c6bff 108deg 111.6deg, /* 하리보 */
+    #dbd4db 111.6deg 360deg  /* 꽝 */
+  );
+}
+
+.text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: 0 0;
+  color: #333;
+  font-weight: bold;
+  font-size: 14px;
+  text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+}
+
+/* 각 텍스트의 위치와 회전 */
+.text[data-value="초코파이"] {
+  transform: rotate(22.5deg) translateY(-120px); /* 15%에 맞게 각도 조정 */
+}
+
+.text[data-value="하리보"] {
+  transform: rotate(77.5deg) translateY(-120px) translateX(-0px); /* 10%에 맞게 각도 조정 */
+}
+
+.text[data-value="수건"] {
+  transform: rotate(110.25deg) translateY(-110px); /* 0.5%에 맞게 각도 조정 */
+}
+
+.text[data-value="꽝"] {
+  transform: rotate(244.5deg) translateY(-110px); /* 74.5%에 맞게 각도 조정 */
+}
+
+.pointer {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 30px solid #ff0000;
+  z-index: 1;
+}
+
+#spinButton {
+  padding: 12px 24px;
+  font-size: 18px;
+  background-color: #222722;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 30px;
+}
+
+#spinButton:hover {
+  background-color: #6d746e;
+}
+
+#spinButton:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+#result {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  min-height: 30px;
+}
+
+#totalAttempts {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
