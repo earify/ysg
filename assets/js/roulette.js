@@ -4,12 +4,22 @@ const resultDisplay = document.getElementById('result');
 const totalAttemptsDisplay = document.getElementById('totalAttempts'); // 추가
 
 // 각 세그먼트의 확률과 각도 정보 수정
+// 세그먼트를 11개로 나누기 (gkgkgkgk 5칸, 꽝 5칸, 초코파이 1칸)
 const segments = [
-  { name: '하리보', probability: 0.15, startAngle: 0, endAngle: 54 }, // 15%
-  { name: '초코파이', probability: 0.10, startAngle: 54, endAngle: 108 }, // 10%
-  { name: '수건', probability: 0.005, startAngle: 108, endAngle: 111.6 }, // 0.5%
-  { name: '꽝', probability: 0.745, startAngle: 111.6, endAngle: 360 } // 74.5%
+  { name: '꽝', probability: 0.35, startAngle: 0, endAngle: 43.2 },   // 35%
+  { name: '오레오', probability: 0.60, startAngle: 43.2, endAngle: 57.6 },      // 60%
+  { name: '꽝', probability: 0.35, startAngle: 57.6, endAngle: 100.8 }, // 35%
+  { name: '하리보', probability: 0.60, startAngle: 100.8, endAngle: 133.2 },    // 60%
+  { name: '꽝', probability: 0.35, startAngle: 133.2, endAngle: 176.4 }, // 35%
+  { name: '하리보', probability: 0.60, startAngle: 176.4, endAngle: 208.8 },     // 60%
+  { name: '꽝', probability: 0.35, startAngle: 208.8, endAngle: 252 }, // 35%
+  { name: '하리보', probability: 0.60, startAngle: 252, endAngle: 284.4 },     // 60%
+  { name: '꽝', probability: 0.35, startAngle: 284.4, endAngle: 327.6 }, // 35%
+  { name: '하리보', probability: 0.60, startAngle: 327.6, endAngle: 360 }      // 60%
 ];
+
+
+
 
 let isSpinning = false;
 let totalSpins = 0;

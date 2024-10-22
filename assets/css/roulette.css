@@ -1,10 +1,11 @@
+
 body {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   margin: 0;
-  background-color: #f0f0f0;
+  background-color: #202020;
   font-family: 'Arial', sans-serif;
 }
 
@@ -37,10 +38,16 @@ body {
   /* 15% 수건 (54도), 10% 초코파이 (54도), 0.5% 하리보 (3.6도), 74.5% 꽝 (302.4도) */
   background: conic-gradient(
     from 0deg,
-    #9e7642 0deg 54deg,    /* 수건 */
-    #ffef60 54deg 108deg,   /* 초코파이 */
-    #1c6bff 108deg 111.6deg, /* 하리보 */
-    #dbd4db 111.6deg 360deg  /* 꽝 */
+    #efefef 0deg 43.2deg,       /* 단계 1 */
+    #3700ff 43.2deg 57.6deg,    /* 단계 2 */
+    #efefef 57.6deg 100.8deg,   /* 단계 3 */
+    #b5b808 100.8deg 133.2deg,  /* 단계 4 */
+    #efefef 133.2deg 176.4deg,  /* 단계 5 */
+    #b5b808 176.4deg 208.8deg,  /* 단계 6 */
+    #efefef 208.8deg 252deg,    /* 단계 7 */
+    #b5b808 252deg 284.4deg,    /* 단계 8 */
+    #efefef 284.4deg 327.6deg,   /* 단계 9 */
+    #b5b808 327.6deg 360deg     /* 단계 10 */
   );
 }
 
@@ -53,23 +60,6 @@ body {
   font-weight: bold;
   font-size: 14px;
   text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
-}
-
-/* 각 텍스트의 위치와 회전 */
-.text[data-value="초코파이"] {
-  transform: rotate(22.5deg) translateY(-120px); /* 15%에 맞게 각도 조정 */
-}
-
-.text[data-value="하리보"] {
-  transform: rotate(77.5deg) translateY(-120px) translateX(-0px); /* 10%에 맞게 각도 조정 */
-}
-
-.text[data-value="수건"] {
-  transform: rotate(110.25deg) translateY(-110px); /* 0.5%에 맞게 각도 조정 */
-}
-
-.text[data-value="꽝"] {
-  transform: rotate(244.5deg) translateY(-110px); /* 74.5%에 맞게 각도 조정 */
 }
 
 .pointer {
@@ -88,7 +78,7 @@ body {
 #spinButton {
   padding: 12px 24px;
   font-size: 18px;
-  background-color: #222722;
+  background-color: #b7b9b7;
   color: white;
   border: none;
   border-radius: 5px;
@@ -102,7 +92,7 @@ body {
 }
 
 #spinButton:disabled {
-  background-color: #cccccc;
+  background-color: #333;
   cursor: not-allowed;
 }
 
@@ -117,4 +107,16 @@ body {
   margin-top: 10px;
   font-size: 18px;
   font-weight: bold;
+}
+
+#result {
+  color: white;
+}
+
+#totalAttempts {
+  color: white;
+}
+
+#prizes {
+  color: rgb(194, 194, 194);
 }
