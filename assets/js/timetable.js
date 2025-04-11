@@ -191,7 +191,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const promises = [];
   
       for (let j = 1; j <= 8; j++) {
-        promises.push(ttr(1, j, tabledate));
+        promises.push(ttr(2, j, tabledate));
       }
   
       const results = await Promise.all(promises);
