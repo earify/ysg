@@ -48,7 +48,7 @@ function bab1(whatday) {
   const bab_params = {
     KEY: "c14d61fef8954d718ab4d1f10bbae173",
     ATPT_OFCDC_SC_CODE: "Q10",
-    SD_SCHUL_CODE: "8490058",
+    SD_SCHUL_CODE: "7140303",
     MMEAL_SC_CODE: "1",
     MLSV_YMD: whatday,
     // MLSV_YMD: "20230913",
